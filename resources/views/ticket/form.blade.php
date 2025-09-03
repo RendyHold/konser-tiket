@@ -39,25 +39,21 @@
     </div>
 
     {{-- SS SIAK (wajib) --}}
-    <div>
-      <label for="bukti_npm" class="block text-sm font-medium mb-1">
-        Upload SS SIAK <span class="text-red-600">*</span>
-      </label>
-      <input
-        type="file"
-        name="bukti_npm"
-        id="bukti_npm"
-        required
-        accept=".jpg,.jpeg,.png,.webp,.pdf"
-        class="block w-full text-sm file:mr-4 file:rounded file:border-0 file:bg-blue-600 file:px-4 file:py-2 file:text-white hover:file:bg-blue-700 @error('bukti_npm') border-red-500 @enderror"
-      >
-      <p class="mt-1 text-xs text-gray-500">
-        Format yang diterima: JPG/PNG/WebP/PDF. Maksimal 4&nbsp;MB.
-      </p>
-      @error('bukti_npm')
-        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-      @enderror
-    </div>
+    <div class="mb-3">
+    <label for="bukti_npm" class="form-label">Bukti SIAK</label>
+    <p class="text-sm text-gray-500">FOTO/SS SIAK yang kamu unggah saat klaim tiket</p>
+
+    <input type="file"
+           class="form-control"
+           id="bukti_npm"
+           name="bukti_npm"
+           accept=".jpg,.jpeg,.png,.webp,.pdf"
+           required>
+
+    @error('bukti_npm')
+        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+    @enderror
+</div>
 
     {{-- Actions --}}
     <div class="pt-2">
