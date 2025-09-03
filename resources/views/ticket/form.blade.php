@@ -43,6 +43,13 @@
     <label for="bukti_npm" class="form-label">Bukti SIAK</label>
     <p class="text-sm text-gray-500">FOTO/SS SIAK yang kamu unggah saat klaim tiket</p>
 
+    @if($ticket && $ticket->npm_proof_path)
+      @php
+          $path = $ticket->npm_proof_path;                           // ex: bukti_npm/xxxx.png
+          $url  = Storage::disk('public')->url($path);               // /storage/bukti_npm/xxxx.png
+          $ext  = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+      @endphp
+
     <input type="file"
            class="form-control"
            id="bukti_npm"
