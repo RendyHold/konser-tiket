@@ -39,27 +39,24 @@
     </div>
 
     {{-- SS SIAK (wajib) --}}
-    <div class="mb-3">
-    <label for="bukti_npm" class="form-label">Bukti SIAK</label>
-    <p class="text-sm text-gray-500">FOTO/SS SIAK yang kamu unggah saat klaim tiket</p>
+    {{-- SS SIAK (wajib) --}}
+<div class="mt-4">
+  <label for="bukti_npm" class="block text-sm font-medium mb-1">Bukti SIAK</label>
+  <p class="text-xs text-gray-500 mb-2">FOTO/SS SIAK yang kamu unggah saat klaim tiket</p>
 
-    @if($ticket && $ticket->npm_proof_path)
-      @php
-          $path = $ticket->npm_proof_path;                           // ex: bukti_npm/xxxx.png
-          $url  = Storage::disk('public')->url($path);               // /storage/bukti_npm/xxxx.png
-          $ext  = strtolower(pathinfo($path, PATHINFO_EXTENSION));
-      @endphp
+  <input
+    type="file"
+    id="bukti_npm"
+    name="bukti_npm"
+    accept=".jpg,.jpeg,.png,.webp,.pdf"
+    required
+    class="w-full rounded border px-3 py-2"
+  >
 
-    <input type="file"
-           class="form-control"
-           id="bukti_npm"
-           name="bukti_npm"
-           accept=".jpg,.jpeg,.png,.webp,.pdf"
-           required>
-
-    @error('bukti_npm')
-        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-    @enderror
+  @error('bukti_npm')
+    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+  @enderror
+</div>
 </div>
 
     {{-- Actions --}}
