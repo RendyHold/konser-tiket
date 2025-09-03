@@ -39,23 +39,36 @@
       <tbody>
         @forelse($tickets as $t)
           @php
-            $url = $t->npm_proof_path ? Storage::url($t->npm_proof_path) : null;
+            $path = $t->npm_proof_path;                                             // ex: bukti_npm/xxx.png
+            $url  = $path ? route('files.proxy', ['path' => $path]) : null;         // serve via proxy (tanpa symlink)
+            $ext  = $path ? strtolower(pathinfo($path, PATHINFO_EXTENSION)) : null; // deteksi tipe
           @endphp
           <tr>
             <td class="p-2 border">{{ optional($t->claimed_at)->format('Y-m-d H:i') }}</td>
             <td class="p-2 border font-mono">{{ $t->code }}</td>
             <td class="p-2 border">{{ $t->npm ?? '-' }}</td>
+
+            {{-- Bukti --}}
             <td class="p-2 border">
               @if($url)
-                <a href="{{ $url }}" target="_blank" class="inline-block">
-                  <img src="{{ $url }}" alt="Bukti {{ $t->code }}"
-                       class="h-16 w-24 object-cover rounded border" />
-                </a>
+                @if(in_array($ext, ['jpg','jpeg','png','webp','gif']))
+                  <a href="{{ $url }}" target="_blank" class="inline-block">
+                    <img src="{{ $url }}" alt="Bukti {{ $t->code }}"
+                         class="h-16 w-24 object-cover rounded border" />
+                  </a>
+                @elseif($ext === 'pdf')
+                  <a href="{{ $url }}" target="_blank" class="text-indigo-600 underline">Lihat PDF</a>
+                @else
+                  <a href="{{ $url }}" target="_blank" class="text-indigo-600 underline">Unduh</a>
+                @endif
               @else
                 <span class="text-gray-400">-</span>
               @endif
             </td>
+
             <td class="p-2 border">{{ optional($t->user)->name ?? '-' }}</td>
+
+            {{-- Aksi --}}
             <td class="p-2 border">
               <div class="flex gap-2">
                 @if($url)
