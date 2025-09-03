@@ -13,10 +13,8 @@ Route::view('/', 'welcome')->name('home');
 
 /* Dashboard (jangan dua kali) */
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
-
 /* Auth scaffolding */
 require __DIR__ . '/auth.php';
 
