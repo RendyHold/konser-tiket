@@ -5,19 +5,31 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    public function up(): void {
+    public function up(): void
+    {
+        if (! Schema::hasTable('tickets') || Schema::hasColumn('tickets', 'npm_proof_path')) {
+            return;
+        }
+
         Schema::table('tickets', function (Blueprint $table) {
-            // path file bukti (disimpan di storage)
-            if (!Schema::hasColumn('tickets', 'npm_proof_path')) {
-                $table->string('npm_proof_path', 2048)->nullable()->after('npm');
+            // pakai 512 agar aman terhadap batas ukuran row;
+            // kalau butuh lebih panjang, ganti ke ->text() saja.
+            $col = $table->string('npm_proof_path', 512)->nullable();
+
+            if (Schema::hasColumn('tickets', 'npm')) {
+                $col->after('npm');
             }
         });
     }
-    public function down(): void {
+
+    public function down(): void
+    {
+        if (! Schema::hasTable('tickets') || ! Schema::hasColumn('tickets', 'npm_proof_path')) {
+            return;
+        }
+
         Schema::table('tickets', function (Blueprint $table) {
-            if (Schema::hasColumn('tickets', 'npm_proof_path')) {
-                $table->dropColumn('npm_proof_path');
-            }
+            $table->dropColumn('npm_proof_path');
         });
     }
 };

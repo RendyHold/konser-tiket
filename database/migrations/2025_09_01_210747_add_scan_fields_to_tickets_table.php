@@ -7,24 +7,49 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
+        if (! Schema::hasTable('tickets')) {
+            return;
+        }
+
         Schema::table('tickets', function (Blueprint $table) {
-            if (!Schema::hasColumn('tickets', 'scanned_at')) {
-                $table->timestamp('scanned_at')->nullable()->index()->after('status');
+            // scanned_at
+            if (! Schema::hasColumn('tickets', 'scanned_at')) {
+                $col = $table->timestamp('scanned_at')->nullable()->index();
+                if (Schema::hasColumn('tickets', 'status')) {
+                    $col->after('status');
+                }
             }
-            if (!Schema::hasColumn('tickets', 'scanned_by')) {
-                // kalau FK bermasalah di env-mu, ganti ke unsignedBigInteger + ->nullable()->index() saja
-                $table->foreignId('scanned_by')->nullable()
-                    ->constrained('users')->nullOnDelete()->after('scanned_at');
+
+            // scanned_by
+            if (! Schema::hasColumn('tickets', 'scanned_by')) {
+                // kalau FK sering gagal di hostingmu, ganti 3 baris di bawah
+                // dengan: $table->unsignedBigInteger('scanned_by')->nullable()->index();
+                $col = $table->foreignId('scanned_by')->nullable();
+                if (Schema::hasColumn('tickets', 'scanned_at')) {
+                    $col->after('scanned_at');
+                }
+                if (Schema::hasTable('users')) {
+                    $table->foreign('scanned_by')
+                          ->references('id')->on('users')
+                          ->nullOnDelete();
+                }
             }
         });
     }
 
     public function down(): void
     {
+        if (! Schema::hasTable('tickets')) {
+            return;
+        }
+
         Schema::table('tickets', function (Blueprint $table) {
             if (Schema::hasColumn('tickets', 'scanned_by')) {
-                $table->dropConstrainedForeignId('scanned_by'); // drop FK + kolom
+                // aman untuk kasus constraint ada/tidak ada
+                try { $table->dropForeign(['scanned_by']); } catch (\Throwable $e) {}
+                $table->dropColumn('scanned_by');
             }
+
             if (Schema::hasColumn('tickets', 'scanned_at')) {
                 $table->dropColumn('scanned_at');
             }
