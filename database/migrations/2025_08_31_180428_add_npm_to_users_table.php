@@ -6,15 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up(): void {
-        Schema::table('tickets', function (Blueprint $table) {
-            $table->string('npm')->unique()->after('user_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('npm')->unique()->after('id');
+            // atau kalau memang harus setelah user_id:
+            // $table->string('npm')->unique()->after('user_id');
         });
     }
 
     public function down(): void {
-        Schema::table('tickets', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('npm');
         });
     }
 };
-
