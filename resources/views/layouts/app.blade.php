@@ -99,7 +99,7 @@
                 <li>
                   <a href="{{ route('admin.proofs') }}"
                      class="hover:text-gray-900 {{ request()->routeIs('admin.proofs') ? 'underline font-semibold' : '' }}">
-                    Bukti SIAK
+                    Bukti SIKA
                   </a>
                 </li>
               @endif

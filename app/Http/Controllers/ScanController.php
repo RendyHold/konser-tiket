@@ -39,4 +39,24 @@ class ScanController extends Controller
             ]);
         });
     }
+
+    public function index(Request $request)
+{
+    $tickets = Ticket::query()
+        ->when($request->filled('q'), function ($query) use ($request) {
+            $q = $request->q;
+            $query->where(function ($sub) use ($q) {
+                $sub->where('code', 'like', "%{$q}%")
+                    ->orWhere('npm', 'like', "%{$q}%");
+            });
+        })
+        ->when($request->filled('from') && $request->filled('to'), function ($query) use ($request) {
+            $query->whereBetween('claimed_at', [$request->from, $request->to]);
+        })
+        ->orderByDesc('claimed_at')
+        ->paginate(5)            // <= batasi 5 per halaman
+        ->withQueryString();     // bawa parameter ?q=&from=&to= saat paging
+
+    return view('admin.scans', compact('tickets'));
+}
 }

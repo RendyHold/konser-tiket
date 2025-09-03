@@ -1,4 +1,3 @@
-{{-- resources/views/admin/scans.blade.php --}}
 @extends('layouts.app')
 
 @section('content')
@@ -59,6 +58,11 @@
     </table>
   </div>
 
-  <div class="mt-3">{{ $tickets->links() }}</div>
+  {{-- Pagination --}}
+  <div class="mt-3">
+  {{ $tickets->onEachSide(1)->links() }}
+</div>
+
+
 </div>
 @endsection
