@@ -127,7 +127,11 @@
 
             <div class="mt-4">
               @if($proofUrl)
-                @php $ext = strtolower(pathinfo($myTicket->npm_proof_path, PATHINFO_EXTENSION)); @endphp
+              $proofUrl = $myTicket->npm_proof_path ? asset('storage/'.$myTicket->npm_proof_path) : null;
+  $proofUrl = $myTicket->npm_proof_path
+      ? route('files.proxy', ['path' => $myTicket->npm_proof_path])
+      : null;
+       @endphp
                 @if(in_array($ext,['jpg','jpeg','png','webp']))
                   <a href="{{ $proofUrl }}" target="_blank" class="block">
                     <img src="{{ $proofUrl }}" alt="bukti siak" class="rounded border max-h-56 w-auto">

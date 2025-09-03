@@ -1,12 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ScanController;        // <= yang punya index() paginate(5)
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
+
+Route::get('/files/{path}', function (string $path) {
+    abort_unless(Storage::disk('public')->exists($path), 404);
+    return Storage::disk('public')->response($path);
+})->where('path', '.*')->name('files.proxy');
 
 /* Halaman publik */
 Route::view('/', 'welcome')->name('home');

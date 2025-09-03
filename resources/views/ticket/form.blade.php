@@ -39,7 +39,6 @@
     </div>
 
     {{-- SS SIAK (wajib) --}}
-    {{-- SS SIAK (wajib) --}}
 <div class="mt-4">
   <label for="bukti_npm" class="block text-sm font-medium mb-1">Bukti SIAK</label>
   <p class="text-xs text-gray-500 mb-2">FOTO/SS SIAK yang kamu unggah saat klaim tiket</p>
