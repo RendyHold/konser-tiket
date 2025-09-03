@@ -82,12 +82,16 @@
 
       @if($myTicket)
         @php
-          $status   = $myTicket->status ?? 'new';
-          $isUsed   = ($status === 'used') || !is_null($myTicket->scanned_at);
+          $status     = $myTicket->status ?? 'new';
+          $isUsed     = ($status === 'used') || !is_null($myTicket->scanned_at);
           $badgeClass = $isUsed ? 'bg-emerald-50 text-emerald-700 ring-emerald-200'
                                 : 'bg-amber-50 text-amber-700 ring-amber-200';
           $badgeText  = $isUsed ? 'Sudah Discan' : 'Belum Discan';
-          $proofUrl   = $myTicket->npm_proof_path ? asset('storage/'.$myTicket->npm_proof_path) : null;
+
+          // Siapkan URL & ekstensi bukti via route proxy (tanpa symlink)
+          $proofPath = $myTicket->npm_proof_path ?? null;   // contoh: 'bukti_npm/xxxx.png'
+          $proofUrl  = $proofPath ? route('files.proxy', ['path' => $proofPath]) : null;
+          $ext       = $proofPath ? strtolower(pathinfo($proofPath, PATHINFO_EXTENSION)) : null;
         @endphp
 
         <div class="grid gap-6 lg:grid-cols-3">
@@ -122,22 +126,19 @@
 
           {{-- Bukti SIAK --}}
           <div class="rounded-xl border bg-white p-4 shadow-sm">
-            <h3 class="font-semibold">Bukti SIKA</h3>
-            <p class="text-xs text-gray-500">FOTO/SS SIKA yang kamu unggah saat klaim tiket</p>
+            <h3 class="font-semibold">Bukti SIAK</h3>
+            <p class="text-xs text-gray-500">FOTO/SS SIAK yang kamu unggah saat klaim tiket</p>
 
             <div class="mt-4">
               @if($proofUrl)
-              $proofUrl = $myTicket->npm_proof_path ? asset('storage/'.$myTicket->npm_proof_path) : null;
-  $proofUrl = $myTicket->npm_proof_path
-      ? route('files.proxy', ['path' => $myTicket->npm_proof_path])
-      : null;
-       @endphp
-                @if(in_array($ext,['jpg','jpeg','png','webp']))
+                @if(in_array($ext, ['jpg','jpeg','png','webp','gif']))
                   <a href="{{ $proofUrl }}" target="_blank" class="block">
-                    <img src="{{ $proofUrl }}" alt="bukti siak" class="rounded border max-h-56 w-auto">
+                    <img src="{{ $proofUrl }}" alt="Bukti SIAK" class="rounded border max-h-56 w-auto">
                   </a>
+                @elseif($ext === 'pdf')
+                  <a href="{{ $proofUrl }}" target="_blank" class="text-indigo-600 underline">Lihat Dokumen (PDF)</a>
                 @else
-                  <a href="{{ $proofUrl }}" target="_blank" class="text-indigo-600 underline">Lihat Dokumen</a>
+                  <a href="{{ $proofUrl }}" target="_blank" class="text-indigo-600 underline">Unduh Dokumen</a>
                 @endif
               @else
                 <div class="text-gray-500 text-sm">Belum ada bukti yang tersimpan.</div>
@@ -150,7 +151,7 @@
             <h3 class="font-semibold">Panduan</h3>
             <ol class="mt-3 space-y-2 text-sm text-gray-700 list-decimal pl-5">
               <li>Klaim tiket menggunakan NPM yang valid.</li>
-              <li>Unggah bukti/SS SIKA saat klaim.</li>
+              <li>Unggah bukti/SS SIAK saat klaim.</li>
               <li>Tunjukkan QR/kode tiket ke petugas untuk validasi pada saat acara.</li>
               <li>Setelah discan, status tiket menjadi <span class="font-semibold text-emerald-700">Sudah Discan</span>.</li>
             </ol>
