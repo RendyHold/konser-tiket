@@ -74,8 +74,7 @@
       <div class="col-md-10 col-xs-6 text-right">
       <nav class="main-nav" role="navigation" aria-label="Navigasi utama">
     {{-- Tombol hamburger --}}
-            <button type="button"
-                class="mobile-but"
+            <button type="button" class="mobile-but"
                 aria-label="Buka menu"
                 aria-expanded="false"
                 aria-controls="mainMenu">
