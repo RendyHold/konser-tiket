@@ -55,7 +55,7 @@
           <h3 class="mb-10" style="font-style:italic;">Event Kampus</h3>
           <h1 class="large mb-10">Festival Mahasiswa</h1>
           <p class="uppercase">28 September 2025 — Unindra, Kampus B</p>
-          <a href="#register" class="but scroll">Register Now</a>
+          <a href="{{ route('register') }}" class="but scroll">Register Now</a>
         </div>
       </div>
     </div>
@@ -71,9 +71,9 @@
         <a class="scroll logo" href="#wrapper" aria-label="Kembali ke atas"><h2 class="m-0">FM</h2></a>
       </div>
 
+      {{-- Tombol hamburger --}}
       <div class="col-md-10 col-xs-6 text-right">
       <nav class="main-nav" role="navigation" aria-label="Navigasi utama">
-    {{-- Tombol hamburger --}}
             <button type="button" class="mobile-but"
                 aria-label="Buka menu"
                 aria-expanded="false"

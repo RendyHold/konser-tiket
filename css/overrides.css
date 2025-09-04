@@ -6,34 +6,31 @@
     }
 
     .nav-list {
-      position: fixed;      /* ⬅ ganti absolute jadi fixed biar full layar */
-      inset: 0;             /* sama dengan top:0; right:0; bottom:0; left:0 */
+      position: fixed;
+      inset: 0;
       background: #111;
-      padding: 20px;
+      padding: 20px 18px;
       display: none;
 
       /* Flex untuk center */
       flex-direction: column;
-      justify-content: center;  /* ⬅ vertical center */
-      align-items: center;      /* ⬅ horizontal center */
-      gap: 20px;                /* jarak antar item */
+      justify-content: center;   /* ⬅ center vertical */
+      align-items: center;       /* ⬅ center horizontal */
+      gap: 20px;                 /* jarak antar item */
       z-index: 999;
+
+      min-height: 100vh;         /* ⬅ penting: tinggi penuh layar */
     }
 
     .nav-list.show {
         display: flex;
     }
 
-    .nav-list > ul {
-        height: auto;
-        justify-content: center;
-        align-items: center;
-    }
-
     .nav-list > li {
       list-style: none !important;
       margin: 0 !important;
       padding: 0 !important;
+      text-align: center;
     }
 
     .nav-list > li > a {
@@ -52,7 +49,7 @@
         margin-top: 40px !important;
         padding-top: 15px !important;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
-        max-width: 300px; /* opsional biar tombol ga kepanjangan */
+        max-width: 300px;
     }
 
     .nav-auth-group {
