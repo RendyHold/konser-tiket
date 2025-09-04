@@ -46,32 +46,50 @@
     (function ($) {
         "use strict";
 
-        const $nav  = $('.main-nav');
-        const $btn  = $nav.find('.mobile-but');
+        const $nav = $('.main-nav');
+        const $btn = $nav.find('.mobile-but');
         const $list = $('#mainMenu');
         const $backdrop = $nav.find('.nav-backdrop');
 
-        function closeNav(){
+        // Fungsi untuk menutup menu
+        function closeNav() {
           $nav.removeClass('is-open');
-          $btn.attr('aria-expanded','false');
+          $btn.attr('aria-expanded', 'false');
+          $backdrop.removeClass('show');  // Menyembunyikan backdrop
+          $backdrop[0].hidden = true;    // Menghilangkan backdrop
         }
 
+        // Fungsi untuk membuka menu
+        function openNav() {
+          $nav.addClass('is-open');
+          $btn.attr('aria-expanded', 'true');
+          $backdrop.addClass('show');    // Menampilkan backdrop
+          $backdrop[0].hidden = false;  // Menunjukkan backdrop
+        }
+
+        // Menangani klik pada tombol hamburger
         $btn.on('click', function (e) {
           e.preventDefault();
-          const open = $nav.toggleClass('is-open').hasClass('is-open');
-          $btn.attr('aria-expanded', open ? 'true' : 'false');
+          const isOpen = $nav.hasClass('is-open');
+          if (isOpen) {
+            closeNav();
+          } else {
+            openNav();
+          }
         });
 
-        // klik backdrop menutup menu
+        // Klik pada backdrop untuk menutup menu
         $backdrop.on('click', closeNav);
 
-        // pilih item menu (mobile) => tutup
+        // Klik pada item menu di mobile, maka tutup menu
         $list.on('click', 'a', function () {
-          if (window.matchMedia('(max-width: 767.98px)').matches) closeNav();
+          if (window.matchMedia('(max-width: 767.98px)').matches) {
+            closeNav();
+          }
         });
 
-        // === Background image fallback (kalau img tidak “terbaca”) ===
-        $('.background-img').each(function(){
+        // === Background image fallback (kalau img tidak terbaca) ===
+        $('.background-img').each(function () {
           var path = $(this).children('img').attr('src') || $(this).data('bg') || '';
           if (path) {
             $(this)

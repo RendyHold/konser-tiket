@@ -13,6 +13,7 @@
   {{-- CSS (letakkan file2 ini di public/css) --}}
   <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
   <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
   <link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
   <link rel="stylesheet" href="{{ asset('css/venobox.css') }}">
   <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
@@ -409,6 +410,7 @@
   <script src="{{ asset('js/venobox.min.js') }}"></script>
   <script src="{{ asset('js/instafeed.min.js') }}"></script>
   <script src="{{ asset('js/script.js') }}"></script>
+  <script src="{{ asset('js/fm.js') }}"></script>
 
   {{-- Optional: inisialisasi ringan bila script.js belum ada --}}
   <script>
