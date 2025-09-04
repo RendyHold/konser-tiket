@@ -21,7 +21,13 @@
     }
     .nav-list > li + li { margin-top: 6px; }
 
-    .nav-list .nav-auth { width: 100%; margin-top: 12px; }
+    .nav-list .nav-auth {
+        width: 100%;
+        margin-top: 12px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
     .nav-auth-group {
       display: flex;
       flex-direction: column;
