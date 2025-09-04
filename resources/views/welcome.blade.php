@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
   <link rel="stylesheet" href="{{ asset('css/venobox.css') }}">
   <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
-  <!-- <link rel="stylesheet" href="{{ asset('css/fm.css') }}"> -->
+     <link rel="stylesheet" href="{{ asset('css/fm.css') }}">
   <link rel="stylesheet" href="{{ asset('css/overrides.css') }}">
 </head>
 
@@ -409,7 +409,7 @@
   <script src="{{ asset('js/venobox.min.js') }}"></script>
   <script src="{{ asset('js/instafeed.min.js') }}"></script>
   <script src="{{ asset('js/script.js') }}"></script>
- <!-- <script src="{{ asset('js/fm.js') }}"></script> -->
+  <script src="{{ asset('js/fm.js') }}"></script>
 
   {{-- Optional: inisialisasi ringan bila script.js belum ada --}}
   <script>
