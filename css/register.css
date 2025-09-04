@@ -1,107 +1,57 @@
-/* Reset Umum */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9fafb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Container untuk form */
-.register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 30px;
-}
-
-.form-wrapper {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+/* Styling untuk form */
+form {
     width: 100%;
     max-width: 400px;
-    padding: 30px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Judul Form */
-.form-title {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #333;
+/* Styling untuk label dan input */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
-/* Styling Form */
-.register-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Input Field Styling */
-.input-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.input-field {
-    border: 1px solid #ccc;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 16px;
+input[type="text"],
+input[type="email"],
+input[type="password"] {
     width: 100%;
-    outline: none;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-.input-field:focus {
-    border-color: #5c6bc0;
-}
-
-/* Pesan Error */
-.error-message {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-/* Tombol */
-.register-button {
-    padding: 14px;
-    background-color: #5c6bc0;
+/* Styling untuk tombol */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: purple;
     color: white;
-    border-radius: 6px;
+    border: none;
+    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    width: 100%;
 }
 
-.register-button:hover {
-    background-color: #3f51b5;
+button:hover {
+    background-color: #6a0dad;
 }
 
-/* Footer Section */
-.form-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.already-registered {
-    font-size: 14px;
-    color: #5c6bc0;
+/* Styling untuk link 'Already registered?' */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: purple;
     text-decoration: none;
 }
 
-.already-registered:hover {
+a:hover {
     text-decoration: underline;
 }
-
