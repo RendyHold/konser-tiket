@@ -17,11 +17,10 @@
   <link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
   <link rel="stylesheet" href="{{ asset('css/venobox.css') }}">
   <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/fm.css') }}">
+  <!-- <link rel="stylesheet" href="{{ asset('css/fm.css') }}"> -->
   <link rel="stylesheet" href="{{ asset('css/overrides.css') }}">
 </head>
 
-<script src="{{ asset('js/fm.js') }}"></script>
 <body>
   {{-- Preloader --}}
   <div class="loader" aria-hidden="true">

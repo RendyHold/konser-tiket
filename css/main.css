@@ -103,35 +103,6 @@
   .mobile-but .lines:after{top:9px}
 
   /* === Mobile off-canvas (SATU-SATUNYA implementasi) === */
-  @media (max-width: 767.98px){
-    :root{ --header-h:56px; } /* tinggi header untuk ponsel */
-
-    .mobile-but{display:inline-flex; align-items:center; justify-content:center; z-index:1101;}
-
-    /* layer gelap di belakang drawer */
-    .nav-backdrop{
-      position:fixed; inset:0; background:rgba(0,0,0,.35);
-      opacity:0; pointer-events:none; transition:opacity .25s; z-index:1100;
-    }
-
-    /* drawer dari kanan */
-     /* .nav-list{ */ */
-      /* list-style:none; margin:0; padding:16px; */
-      /* position:fixed; top:0; right:0; bottom:0; width:78vw; max-width:320px; */
-      /* transform:translateX(100%); transition:transform .25s; */
-      /* display:flex; flex-direction:column; gap:14px; text-align:left; */
-      /* background:#0d0d0d; border-left:1px solid rgba(255,255,255,.08); */
-      /* z-index:1101; */
-    /* } */
-
-    /* buka/tutup via .is-open (JS) */
-    .main-nav.is-open .nav-list{ transform:translateX(0); }
-    .main-nav.is-open .nav-backdrop{ opacity:1; pointer-events:auto; }
-
-    .nav-auth{width:100%}
-    .nav-auth-group{flex-direction:column; gap:10px; width:100%}
-    .btn-auth{width:100%}
-  }
 
   /* ======= HERO ======= */
   section.hero{
