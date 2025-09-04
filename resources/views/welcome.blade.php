@@ -410,7 +410,7 @@
   <script src="{{ asset('js/venobox.min.js') }}"></script>
   <script src="{{ asset('js/instafeed.min.js') }}"></script>
   <script src="{{ asset('js/script.js') }}"></script>
-  <script src="{{ asset('js/fm.js') }}"></script>
+ <!-- <script src="{{ asset('js/fm.js') }}"></script> -->
 
   {{-- Optional: inisialisasi ringan bila script.js belum ada --}}
   <script>
