@@ -24,6 +24,12 @@
         display: flex;
     }
 
+    .nav-list > ul {
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
     .nav-list > li {
       list-style: none !important;
       margin: 0 !important;
