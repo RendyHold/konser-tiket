@@ -68,6 +68,10 @@
     opacity:0; pointer-events:none; transition:opacity .25s; z-index:1100;
   }
 
+  .header nav ul{
+    margin-top: 50px;
+  }
+
   .header .nav-list{
     position:fixed; top:0; right:0; bottom:0; width:78vw; max-width:320px;
     transform:translateX(100%); transition:transform .25s;
