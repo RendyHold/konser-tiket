@@ -1,4 +1,12 @@
 {{-- resources/views/auth/register.blade.php --}}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+</head>
+
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf

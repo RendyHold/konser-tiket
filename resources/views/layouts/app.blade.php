@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ $title ?? 'KonserScan' }}</title>
+  <title>{{ $title ?? 'Festival Mahasiswa' }}</title>
 
   {{-- Opsi A: Tailwind CDN (paling cepat). Pastikan koneksi internet aktif. --}}
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,7 +22,7 @@
         <div class="flex items-center">
           <a href="{{ Route::has('dashboard') ? route('dashboard') : url('/') }}"
              class="text-lg font-bold text-gray-900">
-            KonserScan
+            FM Dashboard
           </a>
         </div>
 
