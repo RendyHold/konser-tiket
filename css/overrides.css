@@ -23,8 +23,8 @@
 
     .nav-list .nav-auth {
         width: 100%;
-        margin-top: 12px;
-        padding-top: 30px;
+        margin-top: 40px !important;
+        padding-top: 15px !important;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
 
