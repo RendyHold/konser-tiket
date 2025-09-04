@@ -13,13 +13,11 @@
   {{-- CSS (letakkan file2 ini di public/css) --}}
   <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
   <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
   <link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
   <link rel="stylesheet" href="{{ asset('css/venobox.css') }}">
   <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
   <link rel="stylesheet" href="{{ asset('css/fm.css') }}">
-
-  <link href="{{ asset('css/overrides.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/overrides.css') }}">
 </head>
 
 <script src="{{ asset('js/fm.js') }}"></script>
