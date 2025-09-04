@@ -115,14 +115,14 @@
     }
 
     /* drawer dari kanan */
-    .nav-list{
-      list-style:none; margin:0; padding:16px;
-      position:fixed; top:0; right:0; bottom:0; width:78vw; max-width:320px;
-      transform:translateX(100%); transition:transform .25s;
-      display:flex; flex-direction:column; gap:14px; text-align:left;
-      background:#0d0d0d; border-left:1px solid rgba(255,255,255,.08);
-      z-index:1101;
-    }
+     /* .nav-list{ */ */
+      /* list-style:none; margin:0; padding:16px; */
+      /* position:fixed; top:0; right:0; bottom:0; width:78vw; max-width:320px; */
+      /* transform:translateX(100%); transition:transform .25s; */
+      /* display:flex; flex-direction:column; gap:14px; text-align:left; */
+      /* background:#0d0d0d; border-left:1px solid rgba(255,255,255,.08); */
+      /* z-index:1101; */
+    /* } */
 
     /* buka/tutup via .is-open (JS) */
     .main-nav.is-open .nav-list{ transform:translateX(0); }
