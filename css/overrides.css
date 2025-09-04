@@ -71,5 +71,6 @@
     }
 
     /* Kunci scroll halaman saat menu buka */
-    body.nav-open{ overflow:hidden !important; }
+    body.nav-open{ overflow:hidden }
+    .nav-backdrop.show { opacity: 1; pointer-events: auto;}
   }
