@@ -126,8 +126,8 @@
 
           {{-- Bukti SIAK --}}
           <div class="rounded-xl border bg-white p-4 shadow-sm">
-            <h3 class="font-semibold">Bukti SIAK</h3>
-            <p class="text-xs text-gray-500">FOTO/SS SIAK yang kamu unggah saat klaim tiket</p>
+            <h3 class="font-semibold">Bukti SIKA</h3>
+            <p class="text-xs text-gray-500">FOTO/SS SIKA yang kamu unggah saat klaim tiket</p>
 
             <div class="mt-4">
               @if($proofUrl)
@@ -151,7 +151,7 @@
             <h3 class="font-semibold">Panduan</h3>
             <ol class="mt-3 space-y-2 text-sm text-gray-700 list-decimal pl-5">
               <li>Klaim tiket menggunakan NPM yang valid.</li>
-              <li>Unggah bukti/SS SIAK saat klaim.</li>
+              <li>Unggah bukti/SS SIKA saat klaim.</li>
               <li>Tunjukkan QR/kode tiket ke petugas untuk validasi pada saat acara.</li>
               <li>Setelah discan, status tiket menjadi <span class="font-semibold text-emerald-700">Sudah Discan</span>.</li>
             </ol>
