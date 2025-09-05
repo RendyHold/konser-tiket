@@ -29,7 +29,7 @@
     <button type="submit" class="bg-indigo-600 text-white rounded-lg px-4 py-2">Filter</button>
 
     @if(request()->hasAny(['q', 'role', 'perPage']))
-      <a href="{{ route('admin.users.index') }}" class="text-gray-600 underline">Reset</a>
+      <a href="{{ route('admin.users') }}" class="text-gray-600 underline">Reset</a>
     @endif
   </form>
 
