@@ -6,7 +6,7 @@
   <p class="text-gray-500 mb-4">Kelola role & akun pengguna</p>
 
   {{-- Filter --}}
-  <form id="filterForm" method="GET" action="{{ route('admin.users.index') }}"
+  <form id="filterForm" method="GET" action="{{ route('admin.users') }}"
         class="mb-4 flex flex-wrap items-center gap-3">
     <div class="relative">
       <input type="text" name="q" value="{{ old('q', $q ?? request('q')) }}"
