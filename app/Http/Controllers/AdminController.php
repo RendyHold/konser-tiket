@@ -38,10 +38,39 @@ class AdminController extends Controller
     /**
      * Daftar pengguna + aksi ubah role.
      */
-    public function users()
+    public function users(Request $request)
     {
-        $users = User::orderBy('name')->paginate(10)->withQueryString();
-        return view('admin.users', compact('users'));
+                // ambil query dari request
+    $q       = trim((string) $request->get('q', ''));        // cari nama/email
+    $role    = $request->get('role');                        // admin / petugas / user
+    $perPage = (int) $request->get('perPage', 10);           // default 10
+
+    // amankan nilai perPage
+    if (! in_array($perPage, [10, 25, 50, 100], true)) {
+        $perPage = 10;
+    }
+
+    $users = User::query()
+        // cari di name / email
+        ->when($q !== '', function ($query) use ($q) {
+            $query->where(function ($w) use ($q) {
+                $w->where('name',  'like', "%{$q}%")
+                  ->orWhere('email','like', "%{$q}%");
+            });
+        })
+        // filter role (kalau di tabel users ada kolom `role`)
+        ->when(!empty($role), fn ($query) => $query->where('role', $role))
+
+        // urutkan nama
+        ->orderBy('name')
+        ->paginate($perPage)
+        ->withQueryString(); // simpan parameter filter di pagination
+
+    // daftar role untuk dropdown di view (sesuaikan kalau beda)
+    $roles = ['admin', 'petugas', 'user'];
+
+    return view('admin.users', compact('users', 'q', 'role', 'perPage', 'roles'));
+
     }
 
     public function makePetugas(User $user)
