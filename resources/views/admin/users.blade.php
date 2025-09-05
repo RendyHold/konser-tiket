@@ -7,17 +7,38 @@
     <p class="text-sm text-gray-500">Kelola role & akun pengguna</p>
   </div>
 
-  @if(session('ok'))
-    <div class="rounded-md border border-green-200 bg-green-50 p-3 text-green-800">
-      {{ session('ok') }}
+  <!-- Filter Form -->
+  <form id="filterForm" method="GET" action="{{ route('admin.users') }}" class="mb-4 flex flex-wrap items-center gap-3">
+    <div class="relative">
+      <input type="text" name="q" value="{{ old('q', $q ?? request('q')) }}" placeholder="Cari nama / email…" autocomplete="off" class="border rounded-lg px-3 py-2 min-w-[260px]">
     </div>
-  @endif
-  @if(session('err'))
-    <div class="rounded-md border border-red-200 bg-red-50 p-3 text-red-700">
-      {{ session('err') }}
-    </div>
-  @endif
 
+    <select name="role" class="border rounded-lg px-3 py-2">
+      <option value="">Semua role</option>
+      @foreach(($roles ?? ['admin', 'petugas', 'user']) as $r)
+        <option value="{{ $r }}" @selected(($role ?? request('role')) === $r)>{{ $r }}</option>
+      @endforeach
+    </select>
+
+    <select name="perPage" class="border rounded-lg px-3 py-2">
+      @foreach([10, 25, 50, 100] as $n)
+        <option value="{{ $n }}" @selected(($perPage ?? request('perPage', 10)) == $n)>{{ $n }}/hal</option>
+      @endforeach
+    </select>
+
+    <button type="submit" class="bg-indigo-600 text-white rounded-lg px-4 py-2">Filter</button>
+
+    @if(request()->hasAny(['q', 'role', 'perPage']))
+      <a href="{{ route('admin.users.index') }}" class="text-gray-600 underline">Reset</a>
+    @endif
+  </form>
+
+  <!-- Informasi Hasil Pencarian -->
+  <div class="text-sm text-gray-500 mb-2">
+    Menampilkan {{ $users->firstItem() }}–{{ $users->lastItem() }} dari {{ $users->total() }} user
+  </div>
+
+  <!-- Tabel User -->
   <div class="rounded-xl border bg-white shadow-sm overflow-hidden">
     <table class="min-w-full text-sm">
       <thead class="bg-gray-50 text-left">
@@ -101,4 +122,5 @@
     });
   });
 </script>
+
 @endsection
