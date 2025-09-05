@@ -495,7 +495,7 @@ section.hero .inner-hero{
     display:inline-grid; place-items:center; width:40px; height:40px; border-radius:9999px; color:#fff;
     background:var(--accent); box-shadow:var(--shadow);
   }
-  .bottom-footer{ padding-top:12px; padding-bottom:12px; }  /* atau 0 kalau mau mepet */
+  .bottom-footer{ padding-top:0px; padding-bottom:0px; }  /* atau 0 kalau mau mepet */
   .block-legal{list-style:none; margin:0; padding:0; text-align:right}
   .block-legal li{display:inline-block}
   .block-legal a{color:#cfcfcf; font-size:12px; margin-right:12px; padding-right:12px; position:relative; white-space:nowrap}
