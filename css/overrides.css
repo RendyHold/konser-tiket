@@ -188,4 +188,30 @@ section.hero .inner-hero{
     }
 
     .main-nav.is-open .nav-list{ transform:translateX(0); }
+
+    /* ——— Rapikan footer & hilangkan jarak bawah ——— */
+.bottom-footer{
+    padding-top: 12px !important;   /* atau 0 kalau mau mepet sekali */
+    padding-bottom: 12px !important;/* atau 0 */
   }
+
+  /* Buang margin bawaan elemen terakhir di footer */
+  .bottom-footer p:last-child,
+  .bottom-footer .block-legal:last-child { margin-bottom: 0 !important; }
+
+  /* Jika di Blade masih ada class util pt-50 pb-50, paksa override */
+  .bottom-footer.bg-black.pt-50.pb-50{
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+
+  /* (Opsional) pendekkan bagian atas footer juga kalau terasa tinggi */
+  .top-footer{ padding-top: 24px !important; padding-bottom: 24px !important; }
+
+  /* Pastikan tidak ada margin global bawah */
+  html, body { margin:0; padding:0; }
+
+  }
+
+
+
