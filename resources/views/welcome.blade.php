@@ -378,7 +378,7 @@
         </div>
       </section>
 
-      <div class="bottom-footer bg-black pt-50 pb-50">
+      <div class="bottom-footer bg-black">
         <div class="container">
           <div class="row">
             <div class="col-md-6">
