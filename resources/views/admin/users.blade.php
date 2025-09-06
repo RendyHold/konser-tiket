@@ -111,7 +111,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-            <form method="POST" action="{{ route('admin.users.reset_user_password', $u) }}">
+            <form method="POST" action="{{ route('admin.users.resetPassword', $u) }}">
     @csrf
     @method('POST')
 
