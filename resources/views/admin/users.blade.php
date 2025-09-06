@@ -98,36 +98,45 @@
                   </button>
                 </form>
 
-                {{-- Tombol Reset Password --}}
                 <button type="button" class="px-3 py-1 rounded bg-yellow-600 text-white hover:bg-yellow-700" data-toggle="modal" data-target="#resetPasswordModal{{ $u->id }}">
     Reset Password
 </button>
 
 <!-- Modal untuk Reset Password -->
-<div class="modal-body">
-    <form method="POST" action="{{ route('admin.users.resetPassword', $u) }}">
-        @csrf
-        @method('POST')
+<div class="modal" id="resetPasswordModal{{ $u->id }}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Reset Password untuk {{ $u->name }}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('admin.users.resetPassword', $u) }}">
+                    @csrf
+                    @method('POST')
 
-        <!-- Password Baru -->
-        <div>
-            <x-input-label for="password" :value="__('Password Baru')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-        </div>
+                    <!-- Password Baru -->
+                    <div>
+                        <x-input-label for="password" :value="__('Password Baru')" />
+                        <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
+                    </div>
 
-        <!-- Konfirmasi Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Konfirmasi Password')" />
-            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
-        </div>
+                    <!-- Konfirmasi Password -->
+                    <div class="mt-4">
+                        <x-input-label for="password_confirmation" :value="__('Konfirmasi Password')" />
+                        <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
+                    </div>
 
-        <!-- Tombol Reset Password -->
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
+                    <!-- Tombol Reset Password -->
+                    <div class="flex items-center justify-end mt-4">
+                        <x-primary-button>
+                            {{ __('Reset Password') }}
+                        </x-primary-button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
+    </div>
 </div>
 
 
