@@ -215,16 +215,15 @@ class AdminController extends Controller
      */
     public function resetPassword(Request $request, User $user)
     {
-    // Validasi password
     $request->validate([
         'password' => 'required|confirmed|min:8',
     ]);
 
-    // Reset password pengguna
+    // Reset password
     $user->password = bcrypt($request->password);
     $user->save();
 
-    return redirect()->route('admin.users.index')->with('success', 'Password berhasil di-reset!');
+    return redirect()->route('admin.users')->with('success', 'Password berhasil direset!');
     }
 
     public function generateResetPasswordToken(User $user)
