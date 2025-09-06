@@ -62,12 +62,14 @@ Route::middleware(['auth', 'role:admin,petugas'])->group(function () {
 
     // (kalau perlu)
     Route::post('/scans', [ScanController::class, 'store'])->name('scans.store');
+
 });
 
 /* Admin only: ubah role */
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/users/{user}/make-petugas',   [AdminController::class, 'makePetugas'])->name('users.make-petugas');
     Route::post('/users/{user}/revoke-petugas', [AdminController::class, 'revokePetugas'])->name('users.revoke-petugas');
+
     Route::post('/users/{user}/reset-password', [AdminController::class, 'resetPassword'])->name('admin.users.resetPassword');
 });
 

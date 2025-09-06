@@ -17,7 +17,7 @@
 
     <!-- Form Reset Password -->
     <div class="bg-white rounded-xl shadow-lg p-6 space-y-6">
-        <form method="POST" action="{{ route('admin.users.resetPassword', $u) }}">
+        <form method="POST" action="{{ route('admin.users.resetPassword', ['user' => $u]) }}">
             @csrf
             @method('POST')
 
