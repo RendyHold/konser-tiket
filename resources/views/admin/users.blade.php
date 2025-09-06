@@ -98,12 +98,13 @@
                   </button>
                 </form>
 
-                <form method="GET" action="{{ route('admin.users.resetPassword', $u) }}" class="inline">
-                @csrf
-                <button type="submit" class="px-3 py-1 rounded bg-yellow-600 text-white hover:bg-yellow-700">
-                    Reset Password
+                <form method="POST" action="{{ route('admin.users.resetPassword', $u) }}">
+            @csrf
+            @method('POST') <!-- Tambahkan method POST -->
+            <button type="submit" class="px-3 py-1 rounded bg-yellow-600 text-white hover:bg-yellow-700">
+                Reset Password
                 </button>
-                </form>
+            </form>
 
               @else
                 <span class="text-gray-400 text-xs">—</span>
