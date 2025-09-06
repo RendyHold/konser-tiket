@@ -68,4 +68,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::post('/users/{user}/make-petugas',   [AdminController::class, 'makePetugas'])->name('users.make-petugas');
     Route::post('/users/{user}/revoke-petugas', [AdminController::class, 'revokePetugas'])->name('users.revoke-petugas');
     Route::post('/users/{user}/reset-password', [AdminController::class, 'resetPassword'])->name('users.resetPassword');
+    Route::get('/password/reset/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/password/reset', [PasswordResetController::class, 'reset'])->name('password.update');
 });

@@ -8,6 +8,9 @@ use App\Models\Ticket;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PasswordResetRequest;
+
 
 class AdminController extends Controller
 {
@@ -210,19 +213,33 @@ class AdminController extends Controller
     /**
      * Reset password pengguna.
      */
-    public function resetPassword(User $user)
+    public function resetPassword(Request $request, User $user)
     {
-        // Membuat password baru yang acak
-        $newPassword = Str::random(8); // Atur panjang password sesuai kebutuhan
+    // Validasi password
+    $request->validate([
+    'password' => 'required|confirmed|min:8',
+    ]);
 
-        // Update password pengguna di database
-        $user->password = Hash::make($newPassword);
+    // Reset password
+    $user->password = bcrypt($request->password);
+    $user->save();
+
+    return redirect()->back()->with('success', 'Password berhasil di-reset!');
+    }
+
+    public function generateResetPasswordToken(User $user)
+    {
+        // Generate token
+        $token = Str::random(60);
+
+        // Simpan token ke database
+        $user->reset_token = $token;
         $user->save();
 
-        // Opsional: kirim email notifikasi jika diperlukan
-        // Mail::to($user->email)->send(new PasswordResetMail($newPassword));
+        // Kirim email dengan link reset password
+        Mail::to($user->email)->send(new PasswordResetRequest($token));
 
-        // Menampilkan pesan sukses dan kembali ke halaman pengguna
-        return back()->with('ok', 'Password pengguna telah direset. Password baru: ' . $newPassword);
+        return redirect()->back()->with('success', 'Token reset password telah dikirim ke email pengguna.');
     }
+
 }
