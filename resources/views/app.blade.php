@@ -20,6 +20,12 @@
                         <a href="{{ route('ticket.show') }}" class="hover:underline">Tiket Saya</a>
                     @endif
 
+                    {{-- Menu untuk User biasa --}}
+                    @if(Auth::user()->role === 'user')
+                        <a href="{{ route('__('Profile') }}" class="hover:underline">Profile</a>
+                    @endif
+
+
                     {{-- Menu untuk Petugas --}}
                     @if(Auth::user()->role === 'petugas')
                         <a href="{{ route('ticket.scan') }}" class="hover:underline">Scan Tiket</a>
