@@ -98,10 +98,6 @@
                   </button>
                 </form>
 
-                <button type="button" class="px-3 py-1 rounded bg-yellow-600 text-white hover:bg-yellow-700" data-toggle="modal" data-target="#resetPasswordModal{{ $u->id }}">
-    Reset Password
-</button>
-
 <!-- Modal untuk Reset Password -->
 <div class="modal" id="resetPasswordModal{{ $u->id }}">
     <div class="modal-dialog">
