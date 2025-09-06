@@ -733,6 +733,26 @@ section.hero .inner-hero{
   .block-legal li:last-child a{margin-right:0; padding-right:0}
   .block-legal li:last-child a:before{content:none}
 
+  /* === HARD DESKTOP OVERRIDE === */
+@media (min-width: 768px){
+    .main-nav { display: inline-block !important; }
+
+    #mainMenu {
+      display: flex !important;
+      position: static !important;
+      transform: none !important;
+      width: auto !important;
+      height: auto !important;
+      overflow: visible !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .nav-backdrop { display: none !important; }
+    .main-nav.is-open #mainMenu { display: flex !important; }
+  }
+
+
   /* =========================
      RESPONSIVE
      ========================= */

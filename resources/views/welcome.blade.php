@@ -60,25 +60,24 @@
   <!-- ⬆⬆ -->
 </section>
 
-      {{-- Header --}}
-      <header class="header header--black" role="banner">
+{{-- Header --}}
+<header class="header header--black" role="banner">
   <div class="container">
     <div class="row middle-xs">
       <div class="col-md-2 col-xs-6">
         <a class="scroll logo" href="#wrapper" aria-label="Kembali ke atas"><h2 class="m-0">FM</h2></a>
       </div>
 
-      {{-- Tombol hamburger --}}
+      {{-- Tombol hamburger + Menu --}}
       <div class="col-md-10 col-xs-6 text-right">
-      <nav class="main-nav" role="navigation" aria-label="Navigasi utama">
-            <button type="button" class="mobile-but"
-                aria-label="Buka menu"
-                aria-expanded="false"
-                aria-controls="mainMenu">
-                <span class="lines" aria-hidden="true"></span>
-            </button>
+        <nav class="main-nav" role="navigation" aria-label="Navigasi utama">
+          <button type="button" class="mobile-but"
+                  aria-label="Buka menu"
+                  aria-expanded="false"
+                  aria-controls="mainMenu">
+            <span class="lines" aria-hidden="true"></span>
+          </button>
 
-          <!-- Menu -->
           <ul id="mainMenu" class="nav-list">
             <li><a class="scroll" href="#wrapper">Home</a></li>
             <li><a class="scroll" href="#about">About</a></li>
@@ -102,14 +101,15 @@
               </li>
             @endif
           </ul>
+
           {{-- Backdrop untuk menutup drawer --}}
-        <div class="nav-backdrop" hidden></div>
-        </nav>
+          <div class="nav-backdrop" hidden></div>
         </nav>
       </div>
     </div>
   </div>
 </header>
+
 
     {{-- About --}}
     <section id="about" class="about pt-120 pb-120 brd-bottom">
