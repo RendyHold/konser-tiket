@@ -98,7 +98,7 @@
                   </button>
                 </form>
 
-                <form method="GET" action="{{ route('user.password.reset', ['token' => $user->reset_token]) }}" class="inline">
+                <form method="GET" action="{{ route('admin.users.resetPassword', $u) }}" class="inline">
                 @csrf
                 <button type="submit" class="px-3 py-1 rounded bg-yellow-600 text-white hover:bg-yellow-700">
                     Reset Password
