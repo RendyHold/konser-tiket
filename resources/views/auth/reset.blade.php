@@ -8,7 +8,7 @@
     </div>
 
     <div class="bg-white rounded-xl border shadow-sm p-6">
-        <form method="POST" action="{{ route('password.update') }}">
+        <form method="POST" action="{{ route('user.password.update') }}">
             @csrf
 
             <input type="hidden" name="token" value="{{ $token }}">

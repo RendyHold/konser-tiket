@@ -73,8 +73,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
 
 
     // Rute untuk pengguna yang mereset password mereka sendiri
-Route::get('/password/reset/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
-Route::post('/password/reset', [PasswordResetController::class, 'reset'])->name('password.update');
+Route::get('/password/reset/{token}', [PasswordResetController::class, 'showResetForm'])->name('user.password.reset');
+Route::post('/password/reset', [PasswordResetController::class, 'reset'])->name('user.password.update');
 
 
 
