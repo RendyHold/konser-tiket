@@ -17,34 +17,29 @@ class PasswordResetController extends Controller
 
     // Proses reset password
     public function reset(Request $request)
-    {
-        // Validasi input
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required|confirmed|min:8',
-            'token' => 'required',
-        ]);
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|confirmed|min:8',
+        'token' => 'required',
+    ]);
 
-        // Jika validasi gagal, redirect kembali ke form dengan pesan error
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+    // Mencari user berdasarkan token
+    $user = User::where('email', $request->email)
+                ->where('reset_token', $request->token)
+                ->first();
 
-        // Cari pengguna berdasarkan token dan email
-        $user = User::where('reset_token', $request->token)->first();
-
-        // Cek apakah user ada dan token valid
-        if (!$user || $user->email !== $request->email) {
-            return redirect()->route('password.reset', ['token' => $request->token])
-                             ->withErrors(['email' => 'Token tidak valid atau sudah kadaluarsa.']);
-        }
-
-        // Reset password
-        $user->password = Hash::make($request->password);
-        $user->reset_token = null; // Hapus token setelah reset
-        $user->save();
-
-        // Arahkan pengguna ke halaman login setelah password berhasil direset
-        return redirect()->route('login')->with('success', 'Password berhasil direset. Silakan login dengan password baru.');
+    if (!$user) {
+        return redirect()->route('password.reset', ['token' => $request->token])
+                         ->withErrors(['email' => 'Token atau email tidak valid.']);
     }
+
+    // Reset password
+    $user->password = Hash::make($request->password);
+    $user->reset_token = null;  // Hapus token setelah reset
+    $user->save();
+
+    return redirect()->route('login')->with('success', 'Password berhasil direset.');
+}
+
 }

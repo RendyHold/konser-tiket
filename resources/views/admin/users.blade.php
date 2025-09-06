@@ -111,29 +111,30 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('admin.users.reset_user_password', $u) }}">
-                    @csrf
-                    @method('POST')
+            <form method="POST" action="{{ route('admin.users.reset_user_password', $u) }}">
+    @csrf
+    @method('POST')
 
-                    <!-- Password Baru -->
-                    <div>
-                        <x-input-label for="password" :value="__('Password Baru')" />
-                        <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-                    </div>
+    <!-- Password Baru -->
+    <div>
+        <x-input-label for="password" :value="__('Password Baru')" />
+        <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
+    </div>
 
-                    <!-- Konfirmasi Password -->
-                    <div class="mt-4">
-                        <x-input-label for="password_confirmation" :value="__('Konfirmasi Password')" />
-                        <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
-                    </div>
+    <!-- Konfirmasi Password -->
+    <div class="mt-4">
+        <x-input-label for="password_confirmation" :value="__('Konfirmasi Password')" />
+        <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
+    </div>
 
-                    <!-- Tombol Reset Password -->
-                    <div class="flex items-center justify-end mt-4">
-                        <x-primary-button>
-                            {{ __('Reset Password') }}
-                        </x-primary-button>
-                    </div>
-                </form>
+    <!-- Tombol Reset Password -->
+    <div class="flex items-center justify-end mt-4">
+        <x-primary-button>
+            {{ __('Reset Password') }}
+        </x-primary-button>
+    </div>
+</form>
+
             </div>
         </div>
     </div>
