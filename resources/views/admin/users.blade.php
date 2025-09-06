@@ -98,20 +98,6 @@
                   </button>
                 </form>
 
-                <form method="POST" action="{{ route('admin.resetPassword', ['user' => $u]) }}">
-            @csrf
-            @method('POST') <!-- Tambahkan method POST -->
-            <button type="submit" class="px-3 py-1 rounded bg-yellow-600 text-white hover:bg-yellow-700">
-                Reset Password
-                </button>
-            </form>
-
-            @if (session('status'))
-            <div   div class="bg-green-500 text-white p-4 rounded-lg text-center mb-4">
-                {{ session('status') }}
-            </div>
-            @endif
-
 
               @else
                 <span class="text-gray-400 text-xs">—</span>
