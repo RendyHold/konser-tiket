@@ -106,6 +106,13 @@
                 </button>
             </form>
 
+            @if (session('status'))
+            <div   div class="bg-green-500 text-white p-4 rounded-lg text-center mb-4">
+                {{ session('status') }}
+            </div>
+            @endif
+
+
               @else
                 <span class="text-gray-400 text-xs">—</span>
               @endif
