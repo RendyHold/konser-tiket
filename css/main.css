@@ -759,7 +759,7 @@ section.hero .inner-hero{
   }
 
   /* === FINAL DESKTOP FIX === */
-@media (min-width: 768px) {
+@media (min-width: 1920px) {
     #mainMenu.nav-list {
       display: flex !important;
       position: static !important;
