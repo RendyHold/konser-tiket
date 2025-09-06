@@ -53,6 +53,7 @@
           <h1 class="large mb-10">Festival Mahasiswa</h1>
           <p class="uppercase">28 September 2025 — Unindra, Kampus B</p>
           <a href="{{ route('register') }}" class="but scroll">Register Now</a>
+          <a href="{{ route('login') }}" class="but scroll">Login Now</a>
         </div>
       </div>
     </div>
