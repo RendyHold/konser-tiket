@@ -98,6 +98,17 @@
                   </button>
                 </form>
 
+                {{-- Tombol Reset Password --}}
+                @if(auth()->user()->role === 'admin')
+            <form method="POST" action="{{ route('admin.resetPassword', $u) }}" class="inline">
+                @csrf
+                @method('POST')
+            <button class="px-3 py-1 rounded bg-yellow-600 text-white hover:bg-yellow-700">
+                Reset Password
+            </button>
+            </form>
+            @endif
+
               @else
                 <span class="text-gray-400 text-xs">—</span>
               @endif

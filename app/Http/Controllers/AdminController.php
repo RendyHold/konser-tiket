@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -203,5 +205,24 @@ class AdminController extends Controller
         $filename = 'bukti-npm-' . $ticket->npm . '.' . $ext;
 
         return Storage::disk('public')->download($ticket->npm_proof_path, $filename);
+    }
+
+    /**
+     * Reset password pengguna.
+     */
+    public function resetPassword(User $user)
+    {
+        // Membuat password baru yang acak
+        $newPassword = Str::random(8); // Atur panjang password sesuai kebutuhan
+
+        // Update password pengguna di database
+        $user->password = Hash::make($newPassword);
+        $user->save();
+
+        // Opsional: kirim email notifikasi jika diperlukan
+        // Mail::to($user->email)->send(new PasswordResetMail($newPassword));
+
+        // Menampilkan pesan sukses dan kembali ke halaman pengguna
+        return back()->with('ok', 'Password pengguna telah direset. Password baru: ' . $newPassword);
     }
 }
