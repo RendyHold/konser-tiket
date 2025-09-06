@@ -18,7 +18,6 @@
   <link rel="stylesheet" href="{{ asset('css/venobox.css') }}">
   <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
   <link rel="stylesheet" href="{{ asset('css/fm.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/overrides.css') }}?v={{ time() }}">
 </head>
 
 <body>
