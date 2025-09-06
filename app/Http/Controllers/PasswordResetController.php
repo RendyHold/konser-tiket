@@ -4,21 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\PasswordResetRequest;
 
 class PasswordResetController extends Controller
 {
-    // Menampilkan halaman reset password berdasarkan token
+    // Menampilkan form reset password berdasarkan token
     public function showResetForm($token)
     {
         return view('auth.passwords.reset', ['token' => $token]);
     }
 
-    // Menangani proses reset password
+    // Proses reset password
     public function reset(Request $request)
     {
         // Validasi input
@@ -50,23 +47,4 @@ class PasswordResetController extends Controller
         // Arahkan pengguna ke halaman login setelah password berhasil direset
         return redirect()->route('login')->with('success', 'Password berhasil direset. Silakan login dengan password baru.');
     }
-
-    public function sendResetPasswordLink(Request $request)
-    {
-        $user = user::where('email', $request->email)->first();
-
-        if (!$user) {
-            $token = Str::random(60);
-            $user->reset_token = $token;
-            $user->save();
-
-        // kirim email dengan token reset password
-        Mail::to($user->email)->send(new PasswordResetRequest($token));
-
-        return redirect()->route('login')->with('status', 'Password reset link telah dikirim ke email Anda.');
-        }
-
-        return back()->withErrors(['email' => 'Email tidak ditemukan.']);
-    }
 }
-

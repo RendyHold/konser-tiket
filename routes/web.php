@@ -8,6 +8,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ScanController;        // <= yang punya index() paginate(5)
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PasswordResetController;
 
 Route::get('/files/{path}', function (string $path) {
     abort_unless(Storage::disk('public')->exists($path), 404);
@@ -68,8 +69,13 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::post('/users/{user}/make-petugas',   [AdminController::class, 'makePetugas'])->name('users.make-petugas');
     Route::post('/users/{user}/revoke-petugas', [AdminController::class, 'revokePetugas'])->name('users.revoke-petugas');
     Route::post('/users/{user}/reset-password', [AdminController::class, 'resetPassword'])->name('admin.users.resetPassword');
+
 });
 
-// Rute untuk pengguna yang mereset password mereka sendiri
+
+    // Rute untuk pengguna yang mereset password mereka sendiri
 Route::get('/password/reset/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
 Route::post('/password/reset', [PasswordResetController::class, 'reset'])->name('password.update');
+
+
+
