@@ -9,11 +9,13 @@
         </div>
     @endif
 
+    <!-- Judul dan Keterangan -->
     <div class="text-center">
         <h1 class="text-2xl font-semibold text-gray-800">Reset Password untuk {{ $u->name }}</h1>
         <p class="text-sm text-gray-500">Silakan masukkan password baru Anda.</p>
     </div>
 
+    <!-- Form Reset Password -->
     <div class="bg-white rounded-xl shadow-lg p-6 space-y-6">
         <form method="POST" action="{{ route('admin.users.resetPassword', $u) }}">
             @csrf
@@ -22,13 +24,25 @@
             <!-- Password Baru -->
             <div class="mb-6">
                 <x-input-label for="password" :value="__('Password Baru')" class="text-sm font-semibold text-gray-700" />
-                <x-text-input id="password" class="block mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="password" name="password" required />
+                <x-text-input
+                    id="password"
+                    class="block mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    type="password"
+                    name="password"
+                    required
+                />
             </div>
 
             <!-- Konfirmasi Password -->
             <div class="mb-6">
                 <x-input-label for="password_confirmation" :value="__('Konfirmasi Password')" class="text-sm font-semibold text-gray-700" />
-                <x-text-input id="password_confirmation" class="block mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="password" name="password_confirmation" required />
+                <x-text-input
+                    id="password_confirmation"
+                    class="block mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    type="password"
+                    name="password_confirmation"
+                    required
+                />
             </div>
 
             <!-- Tombol Reset Password -->
