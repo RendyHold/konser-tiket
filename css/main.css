@@ -128,7 +128,7 @@
   }
 
   /* Desktop Menu (Menampilkan menu secara normal pada desktop) */
-  @media (min-width: 768px) {
+  @media (min-width: 1920px) {
     .main-nav {
       display: inline-block; /* Menampilkan menu di desktop */
     }
