@@ -98,7 +98,7 @@
                   </button>
                 </form>
 
-                <form method="POST" action="{{ route('admin.users.resetPassword', ['user' => $u]) }}">
+                <form method="POST" action="{{ route('admin.resetPassword', ['user' => $u]) }}">
             @csrf
             @method('POST') <!-- Tambahkan method POST -->
             <button type="submit" class="px-3 py-1 rounded bg-yellow-600 text-white hover:bg-yellow-700">
