@@ -116,24 +116,23 @@
     @method('POST')
 
     <!-- Password Baru -->
-    <div>
-        <x-input-label for="password" :value="__('Password Baru')" />
-        <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-    </div>
+<div class="mb-6">
+    <x-input-label for="password" :value="__('Password Baru')" class="text-sm font-semibold text-gray-700" />
+    <x-text-input id="password" class="block mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="password" name="password" required />
+</div>
 
-    <!-- Konfirmasi Password -->
-    <div class="mt-4">
-        <x-input-label for="password_confirmation" :value="__('Konfirmasi Password')" />
-        <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
-    </div>
+<!-- Konfirmasi Password -->
+<div class="mb-6">
+    <x-input-label for="password_confirmation" :value="__('Konfirmasi Password')" class="text-sm font-semibold text-gray-700" />
+    <x-text-input id="password_confirmation" class="block mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="password" name="password_confirmation" required />
+</div>
 
-    <!-- Tombol Reset Password -->
-    <div class="flex items-center justify-end mt-4">
-        <x-primary-button>
-            {{ __('Reset Password') }}
-        </x-primary-button>
-    </div>
-</form>
+<!-- Tombol Reset Password -->
+<div class="mt-6">
+    <x-primary-button class="w-full py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-none transition">
+        {{ __('Reset Password') }}
+    </x-primary-button>
+</div>
 
             </div>
         </div>
