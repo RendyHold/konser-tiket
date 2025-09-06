@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
   <link rel="stylesheet" href="{{ asset('css/venobox.css') }}">
   <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/fm.css') }}">
 </head>
 
 <body>
