@@ -32,7 +32,7 @@
           </td>
           <td class="p-2 border">
             {{-- Menambahkan Barcode --}}
-            <img src="{{ asset('app/data/barcodes/'.$t->code.'_barcode.png') }}" alt="Barcode" style="width: 100px; height: auto;">
+            <img src="{{ public_path('/data/barcodes/'.$t->code.'_barcode.png') }}" alt="Barcode" style="width: 100px; height: auto;">
           </td>
           <td class="p-2 border align-top">{{ $t->status ?? '-' }}</td>
           <td class="p-2 border align-top">
