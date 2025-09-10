@@ -12,6 +12,7 @@
         <tr class="bg-gray-100">
           <th class="p-2 border">Kode</th>
           <th class="p-2 border">QR</th>
+          <th class="p-2 border">Barcode</th>  <!-- Menambah kolom untuk barcode -->
           <th class="p-2 border">Status</th>
           <th class="p-2 border">Waktu Scan</th>
         </tr>
@@ -28,6 +29,10 @@
           <td class="p-2 border">
             {{-- QR code (ukuran bisa diubah) --}}
             {!! QrCode::size(180)->margin(1)->generate($t->code) !!}
+          </td>
+          <td class="p-2 border">
+            {{-- Menambahkan Barcode --}}
+            <img src="{{ asset('app/data/barcodes/'.$t->code.'_barcode.png') }}" alt="Barcode" style="width: 100px; height: auto;">
           </td>
           <td class="p-2 border align-top">{{ $t->status ?? '-' }}</td>
           <td class="p-2 border align-top">
