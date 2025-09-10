@@ -32,7 +32,7 @@
           </td>
           <td class="p-2 border">
             {{-- Barcode --}}
-            <img src="{{ asset('img/tiket.png) }}" alt="Tiket" style="max-width: 180px;" /> <!-- Menampilkan barcode -->
+            <img src="{{ asset('img/tiket.png') }}" alt="Barcode" style="max-width: 180px;" /> <!-- Menampilkan barcode -->
           </td>
           <td class="p-2 border align-top">{{ $t->status ?? '-' }}</td>
           <td class="p-2 border align-top">
