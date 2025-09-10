@@ -78,7 +78,7 @@ class TicketController extends Controller
     imagecopy($ticketImage, $qrCodeImage, $qrX, $qrY, 0, 0, $qrWidth, $qrHeight);
 
     // Simpan gambar tiket dengan barcode dan QR code
-    $finalTicketPath = public_path('app/data/barcodes/'.$ticket->code.'_with_qr_ticket.png');
+    $finalTicketPath = public_path('barcodes/'.$ticket->code.'_with_qr_ticket.png');
     imagepng($ticketImage, $finalTicketPath);
 
     // Hapus gambar yang sudah tidak digunakan
@@ -109,6 +109,33 @@ class TicketController extends Controller
     return view('ticket.form');
     }
 
+    public function showTicketWithQRCode($ticketCode)
+    {
+    // Gabungkan Barcode dan QR Code dengan Gambar Tiket
+    $ticketImage = imagecreatefrompng(public_path('img/tiket.png'));
+
+    // Generate QR Code
+    $qrCode = QrCode::size(100)->generate($ticketCode);
+    $qrCodeImage = imagecreatefromstring($qrCode);
+
+    // Tentukan posisi QR Code di gambar tiket
+    $qrWidth = imagesx($qrCodeImage);
+    $qrHeight = imagesy($qrCodeImage);
+
+    // Tentukan posisi QR Code di gambar tiket
+    $qrX = 20;
+    $qrY = 100;
+
+    // Menempatkan QR code ke gambar tiket
+    imagecopy($ticketImage, $qrCodeImage, $qrX, $qrY, 0, 0, $qrWidth, $qrHeight);
+
+    // Return image to browser as response without saving
+    return response()->stream(function () use ($ticketImage) {
+        imagepng($ticketImage); // Direct output image
+    }, 200, [
+        'Content-Type' => 'image/png',
+    ]);
+    }
 
 
 }
