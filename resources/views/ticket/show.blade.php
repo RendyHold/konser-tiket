@@ -25,6 +25,7 @@
               <div class="text-xs text-gray-500">NPM: {{ $t->npm }}</div>
             @endisset
           </td>
+          @foreach($tickets as $ticket)
           <td class="p-2 border">
             {{-- Menampilkan barcode (yang sudah mencakup QR code) --}}
             <div class="barcode-container" style="width: 150px; height: 80px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
@@ -32,6 +33,7 @@
                 <img src="{{ url('/qrcodes/'.$ticket->code.'_qrcode.png') }}" alt="QR Code" />
             </div>
           </td>
+          @foreach($tickets as $ticket)
           <td class="p-2 border align-top">{{ $t->status ?? '-' }}</td>
           <td class="p-2 border align-top">
             {{ $t->scanned_at ? $t->scanned_at->format('d M Y H:i') : '-' }}
