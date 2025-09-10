@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Picqer\Barcode\BarcodeGeneratorPNG;
 
 class TicketController extends Controller
 {
@@ -57,6 +59,22 @@ class TicketController extends Controller
             'claimed_at'     => now(),
             'npm_proof_path' => $path,
         ]);
+
+
+        // Generate Barcode dan QR Code
+        $generator = new BarcodeGeneratorPNG();
+        $barcode = $generator->getBarcode($ticket->code, $generator::TYPE_CODE_128);
+        $barcodePath = public_path('barcodes/'.$ticket->code.'_barcode.png');
+        file_put_contents($barcodePath, $barcode);
+
+        $qrCode = QrCode::size(300)->generate($ticket->code);
+        $qrCodePath = public_path('qrcodes/'.$ticket->code.'_qrcode.png');
+        file_put_contents($qrCodePath, $qrCode);
+
+        // Simpan path Barcode dan QR Code ke tiket
+        $ticket->barcode_path = 'barcodes/'.$ticket->code.'_barcode.png';
+        $ticket->qrcode_path = 'qrcodes/'.$ticket->code.'_qrcode.png';
+        $ticket->save();
 
         return redirect()
             ->route('ticket.show')
