@@ -96,4 +96,11 @@ class TicketController extends Controller
         ->with('ok', "Tiket berhasil dibuat dengan kode: {$ticket->code}");
     }
 
+    public function showTicket()
+    {
+    $tickets = Ticket::where('user_id', auth()->id())->get();
+    return view('ticket.show', compact('tickets'));
+    }
+
+
 }
