@@ -1,0 +1,129 @@
+[33m23101cb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m a
+[33md2bcd1e[m a
+[33m40dcfaa[m Update app.blade.php
+[33m2aed302[m Update users.blade.php
+[33ma00e954[m a
+[33m37a9735[m asd
+[33mb0e1200[m Update users.blade.php
+[33m2e64b3c[m Update users.blade.php
+[33mea438ab[m ea
+[33m9126391[m Update users.blade.php
+[33mcd3fe74[m Update users.blade.php
+[33m0fff386[m Update web.php
+[33m4f86f92[m Update reset-password.blade.php
+[33m2515df6[m Update users.blade.php
+[33m11ac32c[m Update users.blade.php
+[33mb836c37[m a
+[33mb363645[m Update users.blade.php
+[33m3b5fe8a[m Update users.blade.php
+[33m84c058e[m Update users.blade.php
+[33m1982afd[m Update reset-password.blade.php
+[33m8158178[m a
+[33m1046b42[m a
+[33m59d1168[m asddas
+[33m259e073[m jkmfhgk
+[33mb217dec[m a
+[33m48d7f17[m a
+[33mf594f53[m aa
+[33m1a72ad9[m a
+[33m62ff643[m a
+[33m29aca75[m a
+[33mcbd8eb3[m a
+[33mf5da928[m a
+[33m7ba8768[m Update users.blade.php
+[33m2991ab0[m a
+[33m628747f[m Update welcome.blade.php
+[33m7906e60[m a
+[33madb4aa0[m Update welcome.blade.php
+[33mc4f793f[m Update main.css
+[33me57ad8b[m a
+[33m9f93de5[m a
+[33me03af75[m a
+[33m7ad9956[m a
+[33m924a2a2[m a
+[33m4ec3826[m Update main.css
+[33m4de4366[m main.css
+[33m5f6638f[m fm
+[33me2f2ff7[m a
+[33m9ef728e[m Update users.blade.php
+[33md31402e[m aa
+[33m78657c8[m aa
+[33m3924387[m Update users.blade.php
+[33me669312[m a
+[33m51065d1[m aa
+[33m4e0301f[m Revert "Update users.blade.php"
+[33m031d930[m time
+[33ma6ec3ee[m Update users.blade.php
+[33ma88218e[m aa
+[33m1b5f3d9[m a
+[33m20280d3[m a
+[33ma102a34[m a
+[33mf286f1a[m ad
+[33m34f88f8[m as
+[33m8c87dac[m ea
+[33mec4f947[m asd
+[33mb87a81b[m Revert "update lupa dan reset password"
+[33mbc1b30d[m Revert "initial"
+[33m370800e[m asd
+[33meee0e77[m asd
+[33m86f4ba6[m Update main.css
+[33ma5f9cb0[m Update overrides.css
+[33mb815f05[m aaa
+[33mf0f6c54[m Update main.css
+[33m930b88c[m Update welcome.blade.php
+[33m19d2c9a[m aa
+[33m1a0092e[m welcome
+[33md7ac3b9[m push
+[33md2a1334[m Update overrides.css
+[33m38ebf7c[m sad
+[33m7a65d7b[m a
+[33mb53a806[m tes
+[33m331b04c[m override
+[33m5711c0f[m a
+[33m6dfcd9d[m psuh
+[33m473d045[m push
+[33mbedb702[m push
+[33m310e372[m css
+[33m7556c61[m s
+[33m6b28461[m overide css
+[33me203117[m override.css
+[33mb079d5e[m css
+[33m2e0ebac[m js
+[33me3df9cd[m landing page
+[33m69af887[m initial
+[33m681cb3b[m update lupa dan reset password
+[33mb9c6b7a[m update login
+[33mb6ac8c7[m update
+[33maf828e7[m ea
+[33mb814994[m register
+[33m634b8c8[m regist
+[33m86a8905[m register
+[33m991bf1b[m Update register.css
+[33m9d161f4[m register css
+[33ma1a09d3[m proofs
+[33m449065b[m Update index.blade.php
+[33m0c00fc1[m intial
+[33m99d74fc[m 1
+[33m64ef3cd[m form
+[33m9464b2e[m Update form.blade.php
+[33m0cfff26[m sika
+[33m7a4e65f[m npm
+[33mc77a814[m register
+[33m3e5906c[m appservice
+[33m6b2a869[m intial
+[33m1099e64[m web.php
+[33me8549d9[m user register
+[33md194bb4[m perubahan
+[33mbaa52f3[m Create 2025_09_03_104324_patch_tickets_missing_columns.php
+[33m2a37561[m guest blade php
+[33m491a732[m perubahan
+[33m179a4eb[m Update guest.blade.php
+[33m7aae03d[m perubahan
+[33m2aadf23[m perubahan
+[33mc7a89d9[m perubahan
+[33mbd27a22[m Update 2025_08_31_180428_add_npm_to_users_table.php
+[33mf5f179a[m menambahkan composer
+[33me58d113[m initial
+[33m1ebce20[m intial
+[33m701acfc[m Update vite.config.js
+[33m2b951d8[m Initial commit
