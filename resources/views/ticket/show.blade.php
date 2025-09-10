@@ -33,7 +33,7 @@
                 <img src="{{ url('/qrcodes/'.$ticket->code.'_qrcode.png') }}" alt="QR Code" />
             </div>
           </td>
-          @foreach($tickets as $ticket)
+          @endforeach
           <td class="p-2 border align-top">{{ $t->status ?? '-' }}</td>
           <td class="p-2 border align-top">
             {{ $t->scanned_at ? $t->scanned_at->format('d M Y H:i') : '-' }}
