@@ -11,7 +11,7 @@ use Picqer\Barcode\BarcodeGeneratorPNG;
 class TicketController extends Controller
 {
     public function claimTicket(Request $request)
-    {
+{
     // guard: stop kalau sudah punya tiket
     if (Ticket::where('user_id', auth()->id())->exists()) {
         return back()
@@ -62,7 +62,7 @@ class TicketController extends Controller
     $barcodeImage = imagecreatefromstring($barcode); // Barcode image
     $qrCodeImage = imagecreatefromstring($qrCode); // QR Code image
 
-    // Tentukan posisi QR Code dalam gambar tiket
+    // Tentukan posisi QR Code dalam gambar tiket (di kiri kotak kosong)
     $barcodeWidth = imagesx($barcodeImage);
     $barcodeHeight = imagesy($barcodeImage);
     $qrWidth = imagesx($qrCodeImage);
@@ -73,8 +73,8 @@ class TicketController extends Controller
     $barcodeY = 200; // Posisi Y untuk barcode
     imagecopy($ticketImage, $barcodeImage, $barcodeX, $barcodeY, 0, 0, $barcodeWidth, $barcodeHeight);
 
-    $qrX = 150;  // Posisi X untuk QR code
-    $qrY = 220;  // Posisi Y untuk QR code
+    $qrX = 30;  // Posisi X untuk QR code di kotak kiri
+    $qrY = 50;  // Posisi Y untuk QR code
     imagecopy($ticketImage, $qrCodeImage, $qrX, $qrY, 0, 0, $qrWidth, $qrHeight);
 
     // Simpan gambar tiket dengan barcode dan QR code
@@ -87,14 +87,15 @@ class TicketController extends Controller
     imagedestroy($qrCodeImage);
 
     // Simpan path gambar tiket ke database
-    $barcodePath = Storage::disk('local')->put('data/barcodes/'.$ticket->code.'_barcode.png', $barcode);
-    $qrCodePath = Storage::disk('local')->put('data/qrcodes/'.$ticket->code.'_qrcode.png', $qrCode);
+    $ticket->barcode_path = 'barcodes/'.$ticket->code.'_with_qr_ticket.png';
+    $ticket->qrcode_path = 'qrcodes/'.$ticket->code.'_qrcode.png';
     $ticket->save();
 
     return redirect()
         ->route('ticket.show')
         ->with('ok', "Tiket berhasil dibuat dengan kode: {$ticket->code}");
     }
+
 
     public function showTicket()
     {
