@@ -9,6 +9,8 @@ use App\Http\Controllers\ScanController;        // <= yang punya index() paginat
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PasswordResetController;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 
 Route::get('/files/{path}', function (string $path) {
     abort_unless(Storage::disk('public')->exists($path), 404);
@@ -77,6 +79,26 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     // Rute untuk pengguna yang mereset password mereka sendiri
 Route::get('/password/reset/{token}', [PasswordResetController::class, 'showResetForm'])->name('user.password.reset');
 Route::post('/password/reset', [PasswordResetController::class, 'reset'])->name('user.password.update');
+
+Route::get('/barcodes/{filename}', function ($filename) {
+    $path = storage_path('app/data/barcodes/'.$filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    return response()->file($path);
+});
+
+Route::get('/qrcodes/{filename}', function ($filename) {
+    $path = storage_path('app/data/qrcodes/'.$filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    return response()->file($path);
+});
 
 
 

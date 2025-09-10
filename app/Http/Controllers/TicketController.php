@@ -87,8 +87,8 @@ class TicketController extends Controller
     imagedestroy($qrCodeImage);
 
     // Simpan path gambar tiket ke database
-    $ticket->barcode_path = 'barcodes/'.$ticket->code.'_with_qr_ticket.png';
-    $ticket->qrcode_path = 'qrcodes/'.$ticket->code.'_qrcode.png';
+    $barcodePath = Storage::disk('local')->put('data/barcodes/'.$ticket->code.'_barcode.png', $barcode);
+    $qrCodePath = Storage::disk('local')->put('data/qrcodes/'.$ticket->code.'_qrcode.png', $qrCode);
     $ticket->save();
 
     return redirect()

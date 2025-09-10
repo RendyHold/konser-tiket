@@ -28,7 +28,8 @@
           <td class="p-2 border">
             {{-- Menampilkan barcode (yang sudah mencakup QR code) --}}
             <div class="barcode-container" style="width: 150px; height: 80px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-                <img src="{{ asset($t->barcode_path) }}" alt="Barcode" style="width: 100%; height: auto;" />
+                <img src="{{ url('/barcodes/'.$ticket->code.'_barcode.png') }}" alt="Barcode" />
+                <img src="{{ url('/qrcodes/'.$ticket->code.'_qrcode.png') }}" alt="QR Code" />
             </div>
           </td>
           <td class="p-2 border align-top">{{ $t->status ?? '-' }}</td>
