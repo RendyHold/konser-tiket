@@ -11,8 +11,7 @@
       <thead>
         <tr class="bg-gray-100">
           <th class="p-2 border">Kode</th>
-          <th class="p-2 border">QR</th>
-          <th class="p-2 border">Barcode</th> <!-- Kolom baru untuk Barcode -->
+          <th class="p-2 border">Barcode</th> <!-- Hanya kolom Barcode -->
           <th class="p-2 border">Status</th>
           <th class="p-2 border">Waktu Scan</th>
         </tr>
@@ -27,12 +26,10 @@
             @endisset
           </td>
           <td class="p-2 border">
-            {{-- QR code (ukuran bisa diubah) --}}
-            {!! QrCode::size(180)->margin(1)->generate($t->code) !!}
-          </td>
-          <td class="p-2 border">
-            {{-- Barcode --}}
-            <img src="{{ asset('img/tiket.png') }}" alt="Barcode" style="max-width: 180px;" /> <!-- Menampilkan barcode -->
+            {{-- Menampilkan barcode (yang sudah mencakup QR code) --}}
+            <div class="barcode-container" style="width: 150px; height: 80px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+                <img src="{{ asset('img/tiket.png') }}" alt="Barcode" style="width: 100%; height: auto;" />
+            </div>
           </td>
           <td class="p-2 border align-top">{{ $t->status ?? '-' }}</td>
           <td class="p-2 border align-top">

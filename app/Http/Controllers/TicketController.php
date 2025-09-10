@@ -67,7 +67,7 @@ class TicketController extends Controller
         $barcodePath = public_path('barcodes/'.$ticket->code.'_barcode.png');
         file_put_contents($barcodePath, $barcode);
 
-        $qrCode = QrCode::size(300)->generate($ticket->code);
+        $qrCode = QrCode::size(100)->generate($ticket->code);
         $qrCodePath = public_path('qrcodes/'.$ticket->code.'_qrcode.png');
         file_put_contents($qrCodePath, $qrCode);
 
