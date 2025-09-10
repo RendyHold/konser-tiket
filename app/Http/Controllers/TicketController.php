@@ -63,6 +63,60 @@ class TicketController extends Controller
             ->with('ok', "Tiket berhasil dibuat dengan kode: {$ticket->code}");
     }
 
+    private function generateTicketImages(Ticket $ticket)
+    {
+        // Pastikan folder 'barcodes' ada
+        $barcodePath = base_path('app/data/barcodes');
+        if (!file_exists($barcodePath)) {
+            mkdir($barcodePath, 0755, true);
+        }
+
+        // Generate Barcode
+        $generator = new BarcodeGeneratorPNG();
+        $barcode = $generator->getBarcode($ticket->code, $generator::TYPE_CODE_128);
+        $barcodeFilePath = $barcodePath.'/'.$ticket->code.'_barcode.png';
+        file_put_contents($barcodeFilePath, $barcode);
+
+        // Generate QR Code
+        $qrCode = QrCode::size(100)->generate($ticket->code);
+        $qrCodePath = base_path('app/data/qrcodes/'.$ticket->code.'_qrcode.png');
+        file_put_contents($qrCodePath, $qrCode);
+
+        // Gabungkan Barcode dan QR Code dengan Gambar Tiket
+        $ticketImage = imagecreatefrompng(base_path('app/img/tiket.png')); // Gambar tiket awal
+        $barcodeImage = imagecreatefromstring($barcode); // Barcode image
+        $qrCodeImage = imagecreatefromstring($qrCode); // QR Code image
+
+        // Tentukan posisi QR Code di gambar tiket
+        $barcodeWidth = imagesx($barcodeImage);
+        $barcodeHeight = imagesy($barcodeImage);
+        $qrWidth = imagesx($qrCodeImage);
+        $qrHeight = imagesy($qrCodeImage);
+
+        // Menempatkan barcode dan QR code ke gambar tiket
+        $barcodeX = 30;  // Posisi X untuk barcode
+        $barcodeY = 200; // Posisi Y untuk barcode
+        imagecopy($ticketImage, $barcodeImage, $barcodeX, $barcodeY, 0, 0, $barcodeWidth, $barcodeHeight);
+
+        $qrX = 30;  // Posisi X untuk QR code
+        $qrY = 50;  // Posisi Y untuk QR code
+        imagecopy($ticketImage, $qrCodeImage, $qrX, $qrY, 0, 0, $qrWidth, $qrHeight);
+
+        // Simpan gambar tiket dengan barcode dan QR code
+        $finalTicketPath = base_path('app/data/barcodes/'.$ticket->code.'_with_qr_ticket.png');
+        imagepng($ticketImage, $finalTicketPath);
+
+        // Hapus gambar yang sudah tidak digunakan
+        imagedestroy($ticketImage);
+        imagedestroy($barcodeImage);
+        imagedestroy($qrCodeImage);
+
+        // Simpan path gambar tiket ke database (opsional)
+        $ticket->barcode_path = 'app/data/barcodes/'.$ticket->code.'_with_qr_ticket.png';
+        $ticket->qrcode_path = 'app/data/qrcodes/'.$ticket->code.'_qrcode.png';
+        $ticket->save();
+    }
+
     public function showTicket()
     {
         $tickets = Ticket::where('user_id', auth()->id())->get();
