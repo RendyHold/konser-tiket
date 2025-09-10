@@ -102,5 +102,12 @@ class TicketController extends Controller
     return view('ticket.show', compact('tickets'));
     }
 
+    public function showForm()
+    {
+    // Logika untuk menampilkan form tiket
+    return view('ticket.form');
+    }
+
+
 
 }
