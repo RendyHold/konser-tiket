@@ -42,19 +42,19 @@ class TicketController extends Controller
     ]);
 
     // Pastikan folder 'barcodes' ada
-    if (!Storage::disk('public')->exists('barcodes')) {
-        Storage::disk('public')->makeDirectory('barcodes');
+    if (!file_exists(base_path('app/data/barcodes'))) {
+        mkdir(base_path('app/data/barcodes'), 0755, true);
     }
 
     // Generate Barcode
     $generator = new BarcodeGeneratorPNG();
     $barcode = $generator->getBarcode($ticket->code, $generator::TYPE_CODE_128);
-    $barcodePath = public_path('barcodes/'.$ticket->code.'_barcode.png');
+    $barcodePath = base_path('app/data/barcodes/'.$ticket->code.'_barcode.png');
     file_put_contents($barcodePath, $barcode);
 
     // Generate QR Code
     $qrCode = QrCode::size(100)->generate($ticket->code);
-    $qrCodePath = public_path('qrcodes/'.$ticket->code.'_qrcode.png');
+    $qrCodePath = base_path('app/data/qrcodes/'.$ticket->code.'_qrcode.png');
     file_put_contents($qrCodePath, $qrCode);
 
     // Gabungkan Barcode dan QR Code dengan Gambar Tiket
