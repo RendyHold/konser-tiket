@@ -43,7 +43,7 @@ class TicketController extends Controller
 
     // Pastikan folder 'barcodes' ada
     if (!file_exists(base_path('app/data/barcodes'))) {
-        mkdir(base_path('app/data/barcodes'), 0755, true);
+    mkdir(base_path('app/data/barcodes'), 0755, true);
     }
 
     // Generate Barcode
@@ -78,7 +78,7 @@ class TicketController extends Controller
     imagecopy($ticketImage, $qrCodeImage, $qrX, $qrY, 0, 0, $qrWidth, $qrHeight);
 
     // Simpan gambar tiket dengan barcode dan QR code
-    $finalTicketPath = public_path('barcodes/'.$ticket->code.'_with_qr_ticket.png');
+    $finalTicketPath = public_path('app/data/barcodes/'.$ticket->code.'_with_qr_ticket.png');
     imagepng($ticketImage, $finalTicketPath);
 
     // Hapus gambar yang sudah tidak digunakan
