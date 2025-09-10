@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    protected $fillable = ['code','user_id','npm','status','scanned_at','scanned_by','claimed_at','npm_proof_path'];
+    protected $fillable = ['code','user_id','npm','status','scanned_at','scanned_by','claimed_at','npm_proof_path','barcode_path','qrcode_path','barcode_with_qr_path',];
     protected $casts = ['scanned_at' => 'datetime', 'claimed_at' => 'datetime'];
     protected $perPage = 5;
 
