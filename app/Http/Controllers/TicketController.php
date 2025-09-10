@@ -66,7 +66,7 @@ class TicketController extends Controller
     private function generateTicketImages(Ticket $ticket)
 {
     // Pastikan folder 'barcodes' ada
-    $barcodePath = base_path('app/data/barcodes');
+    $barcodePath = base_path('data/barcodes');
     if (!file_exists($barcodePath)) {
         mkdir($barcodePath, 0755, true);
     }
@@ -79,7 +79,7 @@ class TicketController extends Controller
 
     // Generate QR Code
     $qrCode = QrCode::size(100)->generate($ticket->code);
-    $qrCodePath = base_path('app/data/qrcodes/'.$ticket->code.'_qrcode.png');
+    $qrCodePath = base_path('data/qrcodes/'.$ticket->code.'_qrcode.png');
     file_put_contents($qrCodePath, $qrCode);
 
     // Gabungkan Barcode dan QR Code dengan Gambar Tiket
@@ -104,7 +104,7 @@ class TicketController extends Controller
     imagecopy($ticketImage, $qrCodeImage, $qrX, $qrY, 0, 0, $qrWidth, $qrHeight);
 
     // Simpan gambar tiket dengan barcode dan QR code
-    $finalTicketPath = base_path('app/data/barcodes/'.$ticket->code.'_with_qr_ticket.png');
+    $finalTicketPath = base_path('ata/barcodes/'.$ticket->code.'_with_qr_ticket.png');
     imagepng($ticketImage, $finalTicketPath);
 
     // Hapus gambar yang sudah tidak digunakan
@@ -113,8 +113,8 @@ class TicketController extends Controller
     imagedestroy($qrCodeImage);
 
     // Simpan path gambar tiket ke database (optional)
-    $ticket->barcode_path = 'app/data/barcodes/'.$ticket->code.'_with_qr_ticket.png';
-    $ticket->qrcode_path = 'app/data/qrcodes/'.$ticket->code.'_qrcode.png';
+    $ticket->barcode_path = 'data/barcodes/'.$ticket->code.'_with_qr_ticket.png';
+    $ticket->qrcode_path = 'data/qrcodes/'.$ticket->code.'_qrcode.png';
     $ticket->save();
 }
 
