@@ -76,8 +76,11 @@ class TicketController extends Controller
 
     public function showTicket()
     {
-        $tickets = auth()->user()->tickets; // Ambil semua tiket yang dimiliki user
-        return view('ticket.show', compact('tickets'));
+        // Mengambil data tiket berdasarkan user yang login
+    $tickets = Ticket::where('user_id', auth()->id())->get();
+
+    // Mengirim data tiket ke view
+    return view('ticket.show', compact('tickets'));
     }
 
     public function showForm()

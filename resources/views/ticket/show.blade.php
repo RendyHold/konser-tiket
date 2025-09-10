@@ -4,9 +4,7 @@
 <div class="container mx-auto max-w-3xl p-4">
   <h1 class="text-2xl font-bold mb-4">Tiket Saya</h1>
 
-  @if($tickets->isEmpty())
-    <p class="text-gray-600">Belum ada tiket.</p>
-@else
+  @if($tickets && !$tickets->isEmpty())
     <table class="w-full border">
         <thead>
             <tr class="bg-gray-100">
@@ -37,6 +35,8 @@
             @endforeach
         </tbody>
     </table>
+@else
+    <p class="text-gray-600">Belum ada tiket.</p>
 @endif
 </div>
 @endsection
