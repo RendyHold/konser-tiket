@@ -17,6 +17,9 @@ return new class extends Migration
                   ->constrained()
                   ->cascadeOnDelete();
             $table->string('code')->unique();
+            $table->string('barcode_path')->nullable(); // Lokasi file barcode
+            $table->string('qrcode_path')->nullable(); // Lokasi file QR Code
+            $table->string('barcode_with_qr_path')->nullable(); // Lokasi file tiket dengan barcode & QR Code
             $table->timestamp('claimed_at')->nullable();
             $table->timestamps();
         });
