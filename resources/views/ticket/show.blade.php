@@ -6,6 +6,7 @@
 
   @if($tickets && !$tickets->isEmpty())
     <table class="w-full border">
+<<<<<<< HEAD
         <thead>
             <tr class="bg-gray-100">
                 <th class="p-2 border">Kode</th>
@@ -34,6 +35,36 @@
             </tr>
             @endforeach
         </tbody>
+=======
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="p-2 border">Kode</th>
+          <th class="p-2 border">QR</th>
+          <th class="p-2 border">Status</th>
+          <th class="p-2 border">Waktu Scan</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($tickets as $t)
+        <tr>
+          <td class="p-2 border align-top">
+            <div class="font-mono">{{ $t->code }}</div>
+            @isset($t->npm)
+              <div class="text-xs text-gray-500">NPM: {{ $t->npm }}</div>
+            @endisset
+          </td>
+          <td class="p-2 border">
+            {{-- QR code (ukuran bisa diubah) --}}
+            {!! QrCode::size(180)->margin(1)->generate($t->code) !!}
+          </td>
+          <td class="p-2 border align-top">{{ $t->status ?? '-' }}</td>
+          <td class="p-2 border align-top">
+            {{ $t->scanned_at ? $t->scanned_at->format('d M Y H:i') : '-' }}
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+>>>>>>> parent of d2bcd1e (a)
     </table>
 @else
     <p class="text-gray-600">Belum ada tiket.</p>

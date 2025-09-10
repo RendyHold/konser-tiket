@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Picqer\Barcode\BarcodeGeneratorPNG;
+=======
+use App\Models\Ticket;
+use Illuminate\Support\Facades\Storage;
+>>>>>>> parent of d2bcd1e (a)
 
 class TicketController extends Controller
 {
@@ -68,10 +73,16 @@ class TicketController extends Controller
             'Content-Type' => 'image/png',
         ]);
 
+<<<<<<< HEAD
         // Hapus gambar yang sudah tidak digunakan
         imagedestroy($ticketImage);
         imagedestroy($barcodeImage);
         imagedestroy($qrCodeImage);
+=======
+        return redirect()
+            ->route('ticket.show')
+            ->with('ok', "Tiket berhasil dibuat dengan kode: {$ticket->code}");
+>>>>>>> parent of d2bcd1e (a)
     }
 
     public function showTicket()
