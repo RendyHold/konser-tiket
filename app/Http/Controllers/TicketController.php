@@ -24,6 +24,51 @@ class TicketController extends Controller
     }
 
     // Klaim tiket baru
+    public function claimTicket(Request $request)
+    {
+        // Guard: stop jika sudah punya tiket
+        if (Ticket::where('user_id', auth()->id())->exists()) {
+            return back()
+                ->withErrors(['npm' => 'Anda sudah memiliki tiket. Setiap pengguna hanya boleh 1 tiket.'])
+                ->withInput();
+        }
+
+        // Validasi input
+        $data = $request->validate(
+            [
+                'npm'        => 'required|string|max:20|unique:tickets,npm',
+                'bukti_npm'  => 'required|file|mimes:jpg,jpeg,png,webp,pdf|max:4096',
+            ],
+            [
+                'npm.unique'         => 'NPM tersebut sudah pernah digunakan untuk klaim tiket.',
+                'bukti_npm.required' => 'SS SIAK wajib diunggah.',
+            ]
+        );
+
+        // Simpan file bukti
+        $path = $request->file('bukti_npm')->store('bukti_npm', 'public');
+
+        // Buat tiket baru
+        $code = strtoupper('TKT-'.uniqid());
+        $ticket = Ticket::create([
+            'code'           => $code,
+            'user_id'        => auth()->id(),
+            'npm'            => $data['npm'],
+            'status'         => 'new',
+            'claimed_at'     => now(),
+            'npm_proof_path' => $path,
+        ]);
+
+        // Generate barcode dan QR code dan simpan ke folder public
+        $this->generateTicketImages($ticket);
+
+        return redirect()
+            ->route('ticket.show')
+            ->with('ok', "Tiket berhasil dibuat dengan kode: {$ticket->code}");
+    }
+
+    // Fungsi untuk menggabungkan QR Code dan Barcode dengan Gambar Tiket
+
     public function generateTicketImages(Ticket $ticket)
     {
         // Pastikan folder 'barcodes' ada
@@ -43,7 +88,7 @@ class TicketController extends Controller
         QrCode::format('png')->size(200)->generate($ticket->code, $qrCodePath); // Pastikan QR code disimpan sebagai PNG
 
         // Gabungkan Barcode dan QR Code dengan Gambar Tiket
-        $ticketImage = imagecreatefrompng(public_path('img/tiket.png')); // Gambar tiket awal
+        $ticketImage = imagecreatefrompng(public_path('image/tiket.png')); // Gambar tiket awal
         $barcodeImage = imagecreatefromstring($barcode); // Gambar barcode
         $qrCodeImage = imagecreatefrompng($qrCodePath); // Gambar QR Code
 
@@ -77,7 +122,6 @@ class TicketController extends Controller
         $ticket->qrcode_path = 'data/qrcodes/'.$ticket->code.'_qrcode.png';
         $ticket->save();
     }
-
 
     // Menampilkan tiket
     public function showTicket()
