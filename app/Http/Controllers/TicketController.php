@@ -96,7 +96,7 @@ class TicketController extends Controller
     // Gabungkan Barcode dan QR Code dengan Gambar Tiket
     $ticketImage = imagecreatefrompng(public_path('image/tiket.png')); // Gambar tiket awal
     $barcodeImage = imagecreatefromstring($barcode); // Gambar barcode
-    $qrCodeImage = imagecreatefrompng($qrCodePath); // Gambar QR Code
+    $qrCodeImage = imagecreatefromstring($qrCodePath); // Gambar QR Code
 
     // Tentukan posisi QR Code dan Barcode di gambar tiket
     $barcodeWidth = imagesx($barcodeImage);
