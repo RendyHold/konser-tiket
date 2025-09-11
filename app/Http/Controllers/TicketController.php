@@ -71,41 +71,50 @@ class TicketController extends Controller
 
     public function generateTicketImages(Ticket $ticket)
     {
-            // Pastikan folder 'qrcodes' ada
-    $qrCodePath = base_path('data/qrcodes');
-    if (!file_exists($qrCodePath)) {
-        mkdir($qrCodePath, 0755, true);
-    }
+        // Pastikan folder 'barcodes' ada
+        $barcodePath = base_path('data/barcodes');
+        if (!file_exists($barcodePath)) {
+            mkdir($barcodePath, 0755, true);
+        }
 
-    // Generate QR Code
-    $qrCode = QrCode::size(150)->generate($ticket->code); // Ukuran QR bisa disesuaikan
-    $qrCodePath = $qrCodePath.'/'.$ticket->code.'_qrcode.png';
-    file_put_contents($qrCodePath, $qrCode);
+        // Generate Barcode
+        $generator = new BarcodeGeneratorPNG();
+        $barcode = $generator->getBarcode($ticket->code, $generator::TYPE_CODE_128);
+        $barcodeFilePath = $barcodePath.'/'.$ticket->code.'_barcode.png';
+        file_put_contents($barcodeFilePath, $barcode);
 
-    // Gabungkan QR Code dengan Gambar Tiket
-    $ticketImage = imagecreatefrompng(public_path('image/tiket.png')); // Gambar tiket awal
-    $qrCodeImage = imagecreatefromstring($qrCode); // Gambar QR Code
+        // Generate QR Code (ubah ukuran atau margin jika perlu)
+        $qrCode = QrCode::size(150)->generate($ticket->code); // Ukuran disesuaikan
+        $qrCodePath = base_path('data/qrcodes/'.$ticket->code.'_qrcode.png');
+        file_put_contents($qrCodePath, $qrCode);
 
-    // Tentukan posisi QR Code di kotak pada gambar tiket
-    $qrWidth = imagesx($qrCodeImage);
-    $qrHeight = imagesy($qrCodeImage);
+        // Gabungkan Barcode dan QR Code dengan Gambar Tiket
+        $ticketImage = imagecreatefrompng(public_path('img/tiket.png')); // Gambar tiket awal
+        $barcodeImage = imagecreatefromstring($barcode); // Gambar barcode
+        $qrCodeImage = imagecreatefromstring($qrCode); // Gambar QR Code
 
-    // Menempatkan QR Code di kotak (misalnya di posisi kiri atas)
-    $qrX = 40;  // Posisi X untuk QR code di dalam kotak
-    $qrY = 50;  // Posisi Y untuk QR code di dalam kotak
-    imagecopy($ticketImage, $qrCodeImage, $qrX, $qrY, 0, 0, $qrWidth, $qrHeight);
+        // Tentukan posisi QR Code di kotak pada gambar tiket
+        $qrWidth = imagesx($qrCodeImage);
+        $qrHeight = imagesy($qrCodeImage);
 
-    // Simpan gambar tiket dengan QR code
-    $finalTicketPath = public_path('data/tickets/'.$ticket->code.'_with_qr_ticket.png');
-    imagepng($ticketImage, $finalTicketPath);
+        // Menempatkan QR Code di kotak (misalnya di posisi kiri atas)
+        $qrX = 40;  // Posisi X untuk QR code di dalam kotak
+        $qrY = 50;  // Posisi Y untuk QR code di dalam kotak
+        imagecopy($ticketImage, $qrCodeImage, $qrX, $qrY, 0, 0, $qrWidth, $qrHeight);
 
-    // Hapus gambar yang sudah tidak digunakan
-    imagedestroy($ticketImage);
-    imagedestroy($qrCodeImage);
+        // Simpan gambar tiket dengan QR code
+        $finalTicketPath = public_path('data/barcodes/'.$ticket->code.'_with_qr_ticket.png');
+        imagepng($ticketImage, $finalTicketPath);
 
-    // Simpan path gambar tiket ke database (optional)
-    $ticket->qrcode_path = 'data/qrcodes/'.$ticket->code.'_qrcode.png';
-    $ticket->save();
+        // Hapus gambar yang sudah tidak digunakan
+        imagedestroy($ticketImage);
+        imagedestroy($barcodeImage);
+        imagedestroy($qrCodeImage);
+
+        // Simpan path gambar tiket ke database (optional)
+        $ticket->barcode_path = 'data/barcodes/'.$ticket->code.'_with_qr_ticket.png';
+        $ticket->qrcode_path = 'data/qrcodes/'.$ticket->code.'_qrcode.png';
+        $ticket->save();
     }
 
     // Menampilkan tiket
