@@ -94,7 +94,7 @@ class TicketController extends Controller
     QrCode::format('png')->size(200)->generate($ticket->code, $qrCodePath); // Pastikan QR code disimpan sebagai PNG
 
     // Gabungkan Barcode dan QR Code dengan Gambar Tiket
-    $ticketImage = imagecreatefrompng(public_path('imag/tiket.png')); // Gambar tiket awal
+    $ticketImage = imagecreatefrompng(public_path('image/tiket.png')); // Gambar tiket awal
     $barcodeImage = imagecreatefromstring($barcode); // Gambar barcode
     $qrCodeImage = imagecreatefrompng($qrCodePath); // Gambar QR Code
 
