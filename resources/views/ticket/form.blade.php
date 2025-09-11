@@ -39,42 +39,36 @@
     </div>
 
     {{-- SS SIAK (wajib) --}}
-<div class="mt-4">
-  <label for="bukti_npm" class="block text-sm font-medium mb-1">Bukti SIAK</label>
-  <p class="text-xs text-gray-500 mb-2">FOTO/SS SIAK yang kamu unggah saat klaim tiket</p>
+    <div class="mt-4">
+      <label for="bukti_npm" class="block text-sm font-medium mb-1">Bukti SIKA</label>
+      <p class="text-xs text-gray-500 mb-2">FOTO/SS SIKA yang kamu unggah saat klaim tiket</p>
 
-  <input
-    type="file"
-    id="bukti_npm"
-    name="bukti_npm"
-    accept=".jpg,.jpeg,.png,.webp,.pdf"
-    required
-    class="w-full rounded border px-3 py-2"
-  >
+      <input
+        type="file"
+        id="bukti_npm"
+        name="bukti_npm"
+        accept=".jpg,.jpeg,.png,.webp,.pdf"
+        required
+        class="w-full rounded border px-3 py-2"
+      >
 
-  @error('bukti_npm')
-    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-  @enderror
-</div>
-</div>
-<form action="{{ route('ticket.claim') }}" method="POST">
-  @csrf  <!-- Token CSRF untuk keamanan -->
-  {{-- Input lainnya jika diperlukan --}}
-  <div class="pt-2">
-    <button
-      type="submit"
-      class="inline-flex items-center rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    >
-    Claim Tiket
-    </button>
+      @error('bukti_npm')
+        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+      @enderror
+    </div>
 
-  {{-- Actions --}}
-
-
-    <a href="{{ route('ticket.show') }}" class="ml-3 text-sm text-gray-600 hover:underline">
-      Lihat tiket saya
-    </a>
-  </div>
-</form>
+    {{-- Actions --}}
+    <div class="pt-2">
+      <button
+        type="submit"
+        class="inline-flex items-center rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        Claim Tiket
+      </button>
+      <a href="{{ route('ticket.show') }}" class="ml-3 text-sm text-gray-600 hover:underline">
+        Lihat tiket saya
+      </a>
+    </div>
+  </form>
 </div>
 @endsection
