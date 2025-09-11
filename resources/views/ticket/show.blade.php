@@ -11,10 +11,8 @@
       <thead>
         <tr class="bg-gray-100">
           <th class="p-2 border">Kode</th>
-          <th class="p-2 border">QR</th>
           <th class="p-2 border">Barcode</th>  <!-- Menambah kolom untuk barcode -->
           <th class="p-2 border">Status</th>
-          <th class="p-2 border">Waktu Scan</th>
         </tr>
       </thead>
       <tbody>
