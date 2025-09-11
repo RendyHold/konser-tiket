@@ -71,11 +71,7 @@ class TicketController extends Controller
 
     public function generateTicketImages(Ticket $ticket)
     {
-        // Pastikan folder 'barcodes' ada
-        $barcodePath = base_path('data/barcodes');
-        if (!file_exists($barcodePath)) {
-            mkdir($barcodePath, 0755, true);
-        }
+        $qrCodePath = base_path('data/qrcodes/'.$ticket->code.'_qrcode.png');
 
         // Generate Barcode
         $generator = new BarcodeGeneratorPNG();
@@ -84,13 +80,12 @@ class TicketController extends Controller
         file_put_contents($barcodeFilePath, $barcode);
 
         // Generate QR Code (ubah ukuran atau margin jika perlu)
-        $qrCode = QrCode::size(150)->generate($ticket->code); // Ukuran disesuaikan
+        $qrCode = QrCode::size(200)->generate($ticket->code); // Ukuran disesuaikan
         $qrCodePath = base_path('data/qrcodes/'.$ticket->code.'_qrcode.png');
         file_put_contents($qrCodePath, $qrCode);
 
         // Gabungkan Barcode dan QR Code dengan Gambar Tiket
         $ticketImage = imagecreatefrompng(public_path('image/tiket.png')); // Gambar tiket awal
-        $barcodeImage = imagecreatefromstring($barcode); // Gambar barcode
         $qrCodeImage = imagecreatefromstring($qrCode); // Gambar QR Code
 
         // Tentukan posisi QR Code di kotak pada gambar tiket
