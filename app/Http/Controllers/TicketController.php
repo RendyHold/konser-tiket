@@ -41,7 +41,7 @@ class TicketController extends Controller
             ],
             [
                 'npm.unique'         => 'NPM tersebut sudah pernah digunakan untuk klaim tiket.',
-                'bukti_npm.required' => 'SS SIAK wajib diunggah.',
+                'bukti_npm.required' => 'SS SIKA wajib diunggah.',
             ]
         );
 
@@ -85,7 +85,7 @@ class TicketController extends Controller
 
     // Generate QR Code
     $qrCodePath = base_path('data/qrcodes/'.$ticket->code.'_qrcode.png');
-    QrCode::format('png')->size(200)->generate($ticket->code, $qrCodePath); // Pastikan QR code disimpan sebagai PNG
+    QrCode::format('png')->size(300)->generate($ticket->code, $qrCodePath); // Pastikan QR code disimpan sebagai PNG
 
     // Gabungkan Barcode dan QR Code dengan Gambar Tiket
     $ticketImage = imagecreatefrompng(public_path('image/tiket.png')); // Gambar tiket awal
