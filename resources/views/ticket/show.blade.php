@@ -33,12 +33,6 @@
           <td class="p-2 border">
                 <img src="{{ asset($t->barcode_path) }}" alt="Barcode" style="width: 100px; height: auto;">
             </td>
-            <td class="p-2 border">
-                <img src="{{ asset($t->qrcode_path) }}" alt="QR Code" style="width: 100px; height: auto;">
-            </td>
-            <td class="p-2 border">
-                <img src="{{ asset($t->barcode_with_qr_path) }}" alt="Ticket with QR and Barcode">
-            </td>
           <td class="p-2 border align-top">{{ $t->status ?? '-' }}</td>
           <td class="p-2 border align-top">
             {{ $t->scanned_at ? $t->scanned_at->format('d M Y H:i') : '-' }}
