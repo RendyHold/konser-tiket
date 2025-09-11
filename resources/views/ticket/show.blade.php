@@ -31,6 +31,10 @@
             {!! QrCode::size(180)->margin(1)->generate($t->code) !!}
           </td>
           <td class="p-2 border">
+            {{-- QR Code (hanya QR code yang ditampilkan) --}}
+            <img src="{{ asset('data/qrcodes/'.$t->code.'_qrcode.png') }}" alt="QR Code" class="w-20 h-20">
+        </td>
+          <td class="p-2 border">
                 <img src="{{ asset($t->barcode_path) }}" alt="Barcode" style="width: 100px; height: auto;">
             </td>
           <td class="p-2 border align-top">{{ $t->status ?? '-' }}</td>
