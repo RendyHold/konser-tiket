@@ -57,19 +57,22 @@
   @enderror
 </div>
 </div>
+<form action="{{ route('ticket.claim') }}" method="POST">
+  @csrf  <!-- Token CSRF untuk keamanan -->
+  {{-- Input lainnya jika diperlukan --}}
 
-    {{-- Actions --}}
-    <div class="pt-2">
-      <button
-        type="submit"
-        class="inline-flex items-center rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        Claim Tiket
-      </button>
-      <a href="{{ route('ticket.show') }}" class="ml-3 text-sm text-gray-600 hover:underline">
-        Lihat tiket saya
-      </a>
-    </div>
-  </form>
+  {{-- Actions --}}
+  <div class="pt-2">
+    <button
+      type="submit"
+      class="inline-flex items-center rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+      Claim Tiket
+    </button>
+    <a href="{{ route('ticket.show') }}" class="ml-3 text-sm text-gray-600 hover:underline">
+      Lihat tiket saya
+    </a>
+  </div>
+</form>
 </div>
 @endsection
