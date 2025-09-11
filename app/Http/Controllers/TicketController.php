@@ -77,12 +77,6 @@ class TicketController extends Controller
         mkdir($barcodePath, 0755, true);
     }
 
-    // Pastikan folder 'barcodes' ada
-    $barcodePath = base_path('data/barcodes');
-    if (!file_exists($barcodePath)) {
-        mkdir($barcodePath, 0755, true);
-    }
-
     // Generate Barcode
     $generator = new BarcodeGeneratorPNG();
     $barcode = $generator->getBarcode($ticket->code, $generator::TYPE_CODE_128);
@@ -106,12 +100,16 @@ class TicketController extends Controller
 
     // Menempatkan barcode dan QR code ke gambar tiket
     $barcodeX = 100;  // Posisi X untuk barcode
-    $barcodeY = $qrY + $qrHeight + 20; // Posisi Y untuk barcode
+    $barcodeY = $qrHeight + 50; // Posisi Y untuk barcode (di bawah QR Code)
+
+    // Gabungkan barcode ke gambar tiket
     imagecopy($ticketImage, $barcodeImage, $barcodeX, $barcodeY, 0, 0, $barcodeWidth, $barcodeHeight);
 
     // Menempatkan QR Code di kiri atas tiket
     $qrX = 100;  // Posisi X untuk QR code di kiri
-    $qrY = 50;  // Posisi Y untuk QR code di atas
+    $qrY = 50;   // Posisi Y untuk QR code di atas
+
+    // Gabungkan QR code ke gambar tiket
     imagecopy($ticketImage, $qrCodeImage, $qrX, $qrY, 0, 0, $qrWidth, $qrHeight);
 
     // Simpan gambar tiket dengan barcode dan QR code
