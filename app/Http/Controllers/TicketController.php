@@ -142,4 +142,12 @@ class TicketController extends Controller
     return back()->with('error', 'Gambar tiket tidak ditemukan.');
     }
 
+    public function showTicket()
+    {
+    // Assuming you want to show tickets for the authenticated user
+    $tickets = Ticket::where('user_id', auth()->id())->get();
+    return view('ticket.show', compact('tickets'));
+    }
+
+
 }
