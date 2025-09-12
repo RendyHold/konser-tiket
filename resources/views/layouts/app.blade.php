@@ -22,7 +22,7 @@
         <div class="flex items-center">
           <a href="{{ Route::has('dashboard') ? route('dashboard') : url('/') }}"
              class="text-lg font-bold text-gray-900">
-            FM Dashboard
+
           </a>
         </div>
 
@@ -209,7 +209,7 @@
                 text-sm text-gray-500 flex flex-col sm:flex-row items-center justify-between gap-2">
 
       <p class="order-2 sm:order-1">
-        © {{ date('Y') }} KonserScan. All rights reserved.
+        © {{ date('Y') }} RuangTeknologi. All rights reserved.
       </p>
     </div>
   </footer>
