@@ -35,6 +35,10 @@
           <td class="p-2 border align-top">
             {{ $t->scanned_at ? $t->scanned_at->format('d M Y H:i') : '-' }}
           </td>
+          <!-- Tombol Download Barcode -->
+         <td class="p-2 border">
+            <a href="{{ route('ticket.downloadBarcode', $t->barcode_path) }}" class="text-blue-600 hover:underline">Download Barcode</a>
+         </td>
         </tr>
         @endforeach
       </tbody>
