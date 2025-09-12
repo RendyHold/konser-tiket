@@ -37,7 +37,7 @@
           </td>
           <!-- Tombol Download Barcode -->
          <td class="p-2 border">
-            <a href="{{ route('ticket.downloadBarcode', $t->code) }}" class="text-blue-600 hover:underline">Download Barcode</a>
+            <a href="{{ route('ticket.downloadTicket', $t->code) }}" class="text-blue-600 hover:underline">Download Barcode</a>
          </td>
         </tr>
         @endforeach
