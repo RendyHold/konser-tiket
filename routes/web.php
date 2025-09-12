@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/form', [TicketController::class, 'showForm'])->name('ticket.form');
         Route::post('/claim', [TicketController::class, 'claimTicket'])->name('ticket.claim');
         Route::get('/show', [TicketController::class, 'showTicket'])->name('ticket.show');
-        Route::get('/{code}/download', [TicketController::class, 'downloadTicket'])->name('ticket.downloadBarcode');
+        Route::get('/{code}/download', [TicketController::class, 'downloadTicket'])->name('ticket.downloadTicket');
 
     });
 });
