@@ -85,7 +85,7 @@ class TicketController extends Controller
 
     // Generate QR Code
     $qrCodePath = base_path('data/qrcodes/'.$ticket->code.'_qrcode.png');
-    QrCode::format('png')->size(200)->generate($ticket->code, $qrCodePath); // Memperbesar ukuran QR code
+    QrCode::format('png')->size(220)->generate($ticket->code, $qrCodePath); // Memperbesar ukuran QR code
 
     // Gabungkan Barcode dan QR Code dengan Gambar Tiket
     $ticketImage = imagecreatefrompng(public_path('image/tiket.png')); // Gambar tiket awal yang sudah diperbesar
@@ -99,7 +99,7 @@ class TicketController extends Controller
     $qrHeight = imagesy($qrCodeImage);
 
     // Menentukan posisi QR code
-    $qrX = 150;  // Posisi X untuk QR code
+    $qrX = 80;  // Posisi X untuk QR code
     $qrY = 80;  // Posisi Y untuk QR code di atas
 
     // Menempatkan QR Code di kiri atas tiket
