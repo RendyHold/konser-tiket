@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mx-auto max-w-2xl px-6 py-8 bg-white shadow-xl rounded-xl">
+<div class="container mx-auto max-w-3xl px-6 py-8 bg-white shadow-lg rounded-lg">
 
   <!-- Title Section -->
   <h1 class="text-3xl font-semibold text-center text-gray-900 mb-6">Claim Tiket</h1>
@@ -32,7 +32,7 @@
     @csrf
 
     <!-- NPM Field -->
-    <div>
+    <div class="form-group">
       <label for="npm" class="block text-sm font-medium text-gray-800 mb-2">Nomor Pokok Mahasiswa (NPM)</label>
       <input
         type="text"
@@ -50,7 +50,7 @@
     </div>
 
     <!-- Bukti SIKA (File Upload) -->
-    <div class="mt-4">
+    <div class="form-group mt-4">
       <label for="bukti_npm" class="block text-sm font-medium text-gray-800 mb-2">Bukti SIKA</label>
       <p class="text-xs text-gray-500 mb-2">Unggah foto/SS SIKA yang sesuai untuk klaim tiket</p>
       <input
@@ -80,4 +80,38 @@
     </div>
   </form>
 </div>
+
+@endsection
+
+@section('styles')
+<style>
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  .form-group label {
+    font-weight: 600;
+    color: #2D3748;
+  }
+  .form-group input {
+    background-color: #f9f9f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+  }
+  .form-group input:focus {
+    border-color: #3182ce;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.4);
+  }
+  .form-group input:focus + p {
+    color: #3182ce;
+  }
+  .form-group p {
+    margin-top: 0.5rem;
+    color: #718096;
+  }
+  .form-group .text-sm {
+    font-size: 0.875rem;
+  }
+</style>
 @endsection
