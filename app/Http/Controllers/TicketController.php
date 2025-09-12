@@ -99,8 +99,8 @@ class TicketController extends Controller
     $qrHeight = imagesy($qrCodeImage);
 
     // Menentukan posisi QR code
-    $qrX = 80;  // Posisi X untuk QR code
-    $qrY = 80;  // Posisi Y untuk QR code di atas
+    $qrX = 10;  // Posisi X untuk QR code
+    $qrY = 40;  // Posisi Y untuk QR code di atas
 
     // Menempatkan QR Code di kiri atas tiket
     imagecopy($ticketImage, $qrCodeImage, $qrX, $qrY, 0, 0, $qrWidth, $qrHeight);
