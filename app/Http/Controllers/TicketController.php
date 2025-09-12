@@ -36,7 +36,7 @@ class TicketController extends Controller
         // Validasi input
         $data = $request->validate(
             [
-                'npm'        => 'required|string|max:20|unique:tickets,npm',
+                'npm'        => 'required|string|max:12|unique:tickets,npm',
                 'bukti_npm'  => 'required|file|mimes:jpg,jpeg,png,webp,pdf|max:4096',
             ],
             [
