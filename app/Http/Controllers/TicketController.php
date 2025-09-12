@@ -125,27 +125,21 @@ class TicketController extends Controller
     $ticket->save();
     }
 
-    public function downloadBarcode($code)
+    public function downloadTicket($code)
     {
     // Temukan tiket berdasarkan kode
     $ticket = Ticket::where('code', $code)->firstOrFail();
 
-    // Tentukan path file barcode
-    $barcodeFilePath = base_path('data/barcodes/'.$ticket->code.'_barcode.png');
+    // Tentukan path file gambar tiket yang telah digabungkan
+    $ticketImagePath = base_path('data/barcodes/'.$ticket->code.'_with_qr_ticket.png');
 
     // Cek apakah file ada dan kemudian beri respons unduhan
-    if (file_exists($barcodeFilePath)) {
-        return response()->download($barcodeFilePath);
+    if (file_exists($ticketImagePath)) {
+        return response()->download($ticketImagePath);
     }
 
     // Jika file tidak ditemukan, beri respon error
-    return back()->with('error', 'Barcode tidak ditemukan.');
+    return back()->with('error', 'Gambar tiket tidak ditemukan.');
     }
 
-    // Menampilkan tiket
-    public function showTicket()
-    {
-        $tickets = Ticket::where('user_id', auth()->id())->get();
-        return view('ticket.show', compact('tickets'));
-    }
 }
