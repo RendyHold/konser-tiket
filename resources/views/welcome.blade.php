@@ -2,7 +2,7 @@
 <html lang="id">
 
 <head>
-    <title>Rockfest - Music Festival Event, DJ Concert and Night Club Website Template</title>
+    <title>Festival Mahasiswa</title>
     <link rel="icon" href="images-dj/icon.png" type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
