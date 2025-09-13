@@ -1,433 +1,563 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="utf-8" />
-  <title>Festival Mahasiswa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Festival Mahasiswa: konser, pentas seni, bazar, kompetisi—oleh dan untuk mahasiswa kampus." />
-
-  {{-- Fonts --}}
-  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700&display=swap" rel="stylesheet" />
-
-  {{-- CSS (letakkan file2 ini di public/css) --}}
-  <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/venobox.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/fm.css') }}">
+    <title>Rockfest - Music Festival Event, DJ Concert and Night Club Website Template</title>
+    <link rel="icon" href="images-dj/icon.png" type="image/gif" sizes="16x16">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Festival Mahasiswa" name="description" />
+    <meta content="" name="keywords" />
+    <meta content="" name="author" />
+    <!-- CSS Files
+    ================================================== -->
+    <link id="bootstrap" href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link id="bootstrap-grid" href="css/bootstrap-grid.min.css" rel="stylesheet" type="text/css" />
+    <link id="bootstrap-reboot" href="css/bootstrap-reboot.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="css/owl.theme.css" rel="stylesheet" type="text/css" />
+    <link href="css/owl.transitions.css" rel="stylesheet" type="text/css" />
+    <link href="css/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <link href="css/jquery.countdown.css" rel="stylesheet" type="text/css" />
+    <link id="mdb" href="css/mdb.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/de-dj.css" rel="stylesheet" type="text/css" />
+    <!-- color scheme -->
+    <link id="colors" href="css/colors/scheme-02.css" rel="stylesheet" type="text/css" />
+    <link href="css/coloring.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-  {{-- Preloader --}}
-  <div class="loader" aria-hidden="true">
-    <div class="loader-inner">
-      <svg width="120" height="220" viewBox="0 0 100 100" class="loading-spinner" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Loading">
-        <circle class="spinner" cx="50" cy="50" r="21" fill="#111111" stroke-width="1.5"/>
-      </svg>
+<body class="dark-scheme">
+    <div id="wrapper">
+        <div id="preloader">
+            <div class="preloader1"></div>
+        </div>
+        <!-- header begin -->
+        <header class="transparent">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="de-flex sm-pt10">
+                            <div class="de-flex-col">
+                                <div class="de-flex-col">
+                                    <!-- logo begin -->
+                                    <div id="logo">
+                                        <a href="02_djfest-index.html">
+                                            <img alt="" src="images-dj/logomini.png" />
+                                        </a>
+                                    </div>
+                                    <!-- logo close -->
+                                </div>
+                                <div class="de-flex-col">
+                                </div>
+                            </div>
+                            <div class="de-flex-col header-col-mid">
+                                <!-- mainmenu begin -->
+                                <ul id="mainmenu">
+                                    <li><a href="#">Home</a>
+                                    </li>
+                                    <li><a href="#section-about">About</a></li>
+                                    <li><a href="#section-artists">Artists</a></li>
+                                    <li><a href="#section-schedule">Schedule</a></li>
+                                </ul>
+                            </div>
+                            <div class="de-flex-col">
+                                <div class="menu_side_area">
+                                    <a href="{{ route('login')}}" class="btn-main"><i class="fa fa-sign-in"></i><span>Login</span></a>
+                                    <span id="menu-btn"></span>
+                                    <a href="{{ route('register')}}" class="btn-main"><i class="fa fa-sign-in"></i><span>Register</span></a>
+                                    <span id="menu-btn"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header close -->
+        <!-- content begin -->
+        <div class="no-bottom no-top" id="content">
+            <div id="top"></div>
+            <!-- Carousel wrapper -->
+            <section id="de-carousel" class="no-top no-bottom carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
+                <!-- Indicators -->
+                </ol>
+                <!-- Inner -->
+                <div class="carousel-inner">
+                    <!-- Single item -->
+                    <div class="carousel-item active" data-bgimage="url(images-dj/slider/1.jpg)">
+                        <div class="mask">
+                            <div class="d-flex justify-content-center align-items-center h-100">
+                                <div class="container text-white text-center">
+                                    <div class="row">
+                                        <div class="col-md-1s3">
+                                            <h1 class="ultra-big mb-3 wow fadeInUp"><br><span class="id-color"></span></h1>
+                                            <div class="col-md-7 offset-md-3">
+                                                <p class="lead wow fadeInUp" data-wow-delay=".3s"></p>
+                                            </div>
+                                             <div class="spacer-10"></div>
+                                             @if (Route::has ('register'))
+                                             <a href="{{ route('register')}}" class="btn-main wow fadeInUp" data-wow-delay=".6s">CLAIM TIKET HERE!</a>
+                                             @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- Inner -->
+                <!-- Ga kepake -->
+                <a class="carousel-control-prev" href="#de-carousel" role="button" data-mdb-slide="prev">
+                </a>
+                </a>
+            </section>
+            <!-- Carousel wrapper -->
+
+            <div class="arrow_wrap">
+                <div class="arrow__up"></div>
+            </div>
+            <section id="section-date" class="bg-color pt40 pb30">
+                <div class="container">
+                    <div class="row g-custom-x align-items-center">
+                        <div class="col-lg-12">
+                            <div class="text-center">
+                                <h2 class="s2 text-black wow fadeInUp" data-wow-delay="0s">28 Sept 2025</h2>
+                                <h3 class="text-black wow fadeInUp" data-wow-delay=".2s">Parkiran Kampus B,</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--Section About-->
+            <section id="section-about" class="bg-light py-12" data-bgimage="url(images-dj/background/About.png)">
+                <div class="container">
+                    <div class="row g-custom-x align-items-center">
+                        <div class="col-lg-12">
+                            <div class="text-center">
+                                <div class="wm wow slideInUp" style="font-family: 'Orbitron', sans-serif; font-size: 3rem; font-weight: bold; color: #333;"></div>
+                                <h2 class="wow fadeInUp" data-wow-delay=".2s" style="font-family: 'Orbitron', sans-serif; font-size: 3.5rem; color: #333;">
+                                    <span class="id-color">01</span> <span class="font-bold">Festival Mahasiswa</span>
+                                </h2>
+                                <div class="small-border bg-color-2 mx-auto"></div>
+                                <div class="spacer-single"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <p class="text-lg text-dark font-bold" style="font-family: 'montserrat', montserrat; font-size: 1.25rem; line-height: 1.8; color: #333;">
+                                Festival Mahasiswa adalah acara tahunan yang bertujuan untuk menyatukan mahasiswa dari berbagai universitas.
+                                Dengan berbagai kegiatan seperti konser musik, talk show, dan lomba kreatif, Festival Mahasiswa bertujuan
+                                untuk mempererat hubungan antar mahasiswa sekaligus memperkenalkan inovasi dan kreativitas mereka kepada masyarakat.
+                            </p>
+                            <p class="mt-4 text-lg text-dark font-bold" style="font-family: 'montserrat', montserrat; font-size: 1.25rem; line-height: 1.8; color: #333;">
+                                Festival ini diadakan untuk memberikan platform bagi mahasiswa untuk mengekspresikan diri, berbagi pengetahuan,
+                                serta merayakan keberagaman budaya dan ideologi dalam dunia pendidikan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!--Section Artist-->
+            <section id="section-artists">
+                <div class="container">
+                    <div class="row g-custom-x align-items-center">
+                        <div class="col-lg-12">
+                            <div class="text-center">
+                                <div class="wm wow slideInUp">Artists</div>
+                                <h2 class="wow fadeInUp" data-wow-delay=".2s"><span class="id-color">01</span> Artists</h2>
+                                <div class="small-border bg-color-2"></div>
+                                <div class="spacer-single"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-sm-30">
+                            <div class="de-image-text s2 wow flipInY">
+                                <a href="#" class="d-text">
+                                    <div class="arrow_wrap">
+                                        <div class="arrow__up"></div>
+                                    </div>
+                                    <h3>-</h3>
+                                </a>
+                                <img src="images-dj/misc/featured-1.jpg" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-sm-30">
+                            <div class="de-image-text s2 wow flipInY">
+                                <a href="#" class="d-text">
+                                    <div class="arrow_wrap">
+                                        <div class="arrow__up"></div>
+                                    </div>
+                                    <h3>-</h3>
+                                </a>
+                                <img src="images-dj/misc/featured-2.jpg" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-sm-30">
+                            <div class="de-image-text s2 wow flipInY">
+                                <a href="#" class="d-text">
+                                    <div class="arrow_wrap">
+                                        <div class="arrow__up"></div>
+                                    </div>
+                                    <h3>-</h3>
+                                </a>
+                                <img src="images-dj/misc/featured-3.jpg" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1 text-center">
+                            <div class="spacer-single"></div>
+                            <ul class="list-inline-style-1">
+                                <li>Albetad</li>
+                                <li>Formulary</li>
+                                <li>Stylewort</li>
+                                <li>Windgalled</li>
+                                <li>Taxidermize</li>
+                                <li>Lysimachus</li>
+                                <li>Cassinese</li>
+                                <li>Abiezer</li>
+                                <li>Chevelle</li>
+                                <li>Carabus</li>
+                                <li>Aggrieved</li>
+                                <li>Floater</li>
+                                <li>Ovidae</li>
+                                <li>Rockward</li>
+                                <li>Hotbox</li>
+                                <li>Emarcid</li>
+                                <li>Victuallership</li>
+                                <li>Barnard</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section-schedule" aria-label="section-services-tab" data-bgimage="url(images-dj/background/Rundown.jpg)">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="text-center">
+                                <div class="wm wow slideInUp">Schedule</div>
+                                <h2 class="wow fadeInUp" data-wow-delay=".2s"><span class="id-color">02</span> Schedule</h2>
+                                <div class="small-border bg-color wow zoomIn" data-wow-delay=".4s"></div>
+                            </div>
+                        </div>
+                        <div class="spacer-single"></div>
+                        <div class="col-md-12">
+                            <div class="de_tab tab_style_4 text-center">
+                                <ul class="de_nav de_nav_dark">
+                                    <li data-link="#section-services-tab">
+                                        <h3>Day <span>01</span></h3>
+                                        <h4>Sept 28, 2025</h4>
+                                    </li>
+                                    <li data-link="#section-services-tab">
+                                        <h3>Day <span>02</span></h3>
+                                        <h4>Sept 28, 2025</h4>
+                                    </li>
+                                </ul>
+                                <div class="de_tab_content text-left">
+                                    <div id="tab1" class="tab_single_content">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <ul class="list-boxed-s1">
+                                                    <li>
+                                                        <h3>-</h3><span></span>
+                                                    </li>
+                                                    <li>
+                                                        <h3>-</h3><span></span>
+                                                    </li>
+                                                    <li>
+                                                        <h3>-</h3><span></span>
+                                                    </li>
+                                                    <li>
+                                                        <h3>-</h3><span></span>
+                                                    </li>
+                                                    <li>
+                                                        <h3>-</h3><span></span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="tab2" class="tab_single_content">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <ul class="list-boxed-s1">
+                                                    <li>
+                                                        <h3>-</h3><span></span>
+                                                    </li>
+                                                    <li>
+                                                        <h3>-</h3><span></span>
+                                                    </li>
+                                                    <li>
+                                                        <h3>-</h3><span></span>
+                                                    </li>
+                                                    <li>
+                                                        <h3>-</h3><span></span>
+                                                    </li>
+                                                    <li>
+                                                        <h3>-</h3><span></span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background-color: #2EA9E0;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="wm wow slideInUp">Sponsors</div>
+                            <h2 class="wow fadeInUp" data-wow-delay=".2s"><span class="id-color">05</span> Sponsored by:</h2>
+                            <div class="small-border bg-color wow zoomIn" data-wow-delay=".4s"></div>
+                        </div>
+                        <div class="spacer-single"></div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30 justify-content-center">
+                            <img src="images/sponsors/BurgerKing-01.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section style="background-color: #2EA9E0;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="wm wow slideInUp">MediaPartner</div>
+                            <h2 class="wow fadeInUp" data-wow-delay=".2s"><span class="id-color">06</span> MediaPartner by:</h2>
+                            <div class="small-border bg-color wow zoomIn" data-wow-delay=".4s"></div>
+                        </div>
+                        <div class="spacer-single"></div>
+                    </div>
+                    <div class="row g-custom-x">
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/AfterFive-01.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/BekasiGigs-01.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/FomoEvent-01.PNG" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/GAC-01.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/HOBBYKONSERSOLO-01.PNG" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/InfoMusikKita-01.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background-color: #2EA9E0;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                    </div>
+                    <div class="row g-custom-x">
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/JakartaMusikFest-01.PNG" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/JurnalKonser-01.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/Kemenses21-01.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/KonserMyMusik-01.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/KonserRaya-01.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/KonseranBestie-01.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background-color: #2EA9E0;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                        </div>
+                    </div>
+                    <div class="row g-custom-x">
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/LPMProgress-01.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/MASANETWORK-01.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/Sindikart-01.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30">
+                            <img src="images/mediapartner/SupportKonser-01.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background-color: #2EA9E0;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="wm wow slideInUp">Partnership</div>
+                            <h2 class="wow fadeInUp" data-wow-delay=".2s"><span class="id-color">07</span> Partnership by:</h2>
+                            <div class="small-border bg-color wow zoomIn" data-wow-delay=".4s"></div>
+                        </div>
+                        <div class="spacer-single"></div>
+                    </div>
+                    <div class="row justify-content-center"> <!-- Added justify-content-center to center the logos -->
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30 d-flex justify-content-center"> <!-- Added d-flex and justify-content-center to center logo -->
+                            <img src="images/partnership/Logo Dobrak P-01.png" class="img-fluid" alt="logo1">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-sm-30 d-flex justify-content-center"> <!-- Same as above for other logo -->
+                            <img src="images/partnership/Mangele Logo-01.png" class="img-fluid" alt="logo1">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-countdown" aria-label="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <div class="wm wow slideInUp">Begins</div>
+                            <div id="defaultCountdown" class="wow fadeInUp" data-wow-delay=".2s"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- content close -->
+        <a href="#" id="back-to-top"></a>
+        <!-- footer begin -->
+        <footer data-bgimage="url()">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-1">
+                        <div class="widget">
+                            <h5>Contact Info</h5>
+                            <address class="s1">
+                                <span><i class="id-color fa fa-map-marker fa-lg"></i>Kampung Tengah Gedong, Jakarta Timur, Unindra</span>
+                                <span><i class="id-color fa fa-phone fa-lg"></i>+62 no humas</span>
+                                <span><i class="id-color fa fa-envelope-o fa-lg"></i><a href="mailto:contact@example.com">contact@example.com</a></span>
+                            </address>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-1">
+                        <div class="widget">
+                            <h5>Quick Links</h5>
+                            <ul>
+                                <li><a href="02_djfest-contact.html">Contact Us</a></li>
+                                <li><a href="#section-tickets">Ticket</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-1">
+                        <div class="widget">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-1">
+                        <div class="widget">
+                            <h5>Newsletter</h5>
+                            <p>Signup for our newsletter to get the latest news in your inbox.</p>
+                            <form action="blank.php" class="row form-dark" id="form_subscribe" method="post" name="form_subscribe">
+                                <div class="col text-center">
+                                    <input class="form-control" id="txt_subscribe" name="txt_subscribe" placeholder="enter your email" type="text" /> <a href="#" id="btn-subscribe"><i class="arrow_right bg-color-secondary"></i></a>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </form>
+                            <div class="spacer-10"></div>
+                            <small>Your email is safe with us. We don't spam.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="de-flex">
+                                <div class="de-flex-col">
+                                    <a href="02_djfest-index.html">
+                                        <img alt="" class="f-logo" src="images-dj/logomini.png" /><span class="copy">&copy; Copyright 2025 - Ruang Teknologi</span>
+                                    </a>
+                                </div>
+                                <div class="de-flex-col">
+                                    <div class="social-icons">
+                                        <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
+                                        <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin fa-lg"></i></a>
+                                        <a href="#"><i class="fa fa-pinterest fa-lg"></i></a>
+                                        <a href="#"><i class="fa fa-rss fa-lg"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer close -->
     </div>
-  </div>
 
-  {{-- Wrapper --}}
-  <div class="wrapper" id="wrapper">
-    {{-- Hero --}}
-    <section id="home" class="hero overlay" aria-label="Beranda">
-  <div class="main-slider slider" aria-label="Hero images">
-    <ul class="slides">
-      <li>
-        <div class="background-img">
-          <img src="{{ asset('img/1.jpg') }}" alt="Suasana Festival Mahasiswa" loading="lazy">
-        </div>
-      </li>
-    </ul>
-  </div>
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/easing.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/enquire.min.js"></script>
+    <script src="js/jquery.plugin.js"></script>
+    <script src="js/jquery.countTo.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script src="js/jquery.lazy.min.js"></script>
+    <script src="js/jquery.lazy.plugins.min.js"></script>
+    <script src="js/mdb.min.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script src="js/countdown-custom.js"></script>
+    <script src="js/cookit.js"></script>
+    <script src="js/designesia.js"></script>
 
-  <!-- ⬇⬇ INI YANG HILANG: blok inner-hero -->
-  <div class="inner-hero">
-    <div class="container hero-content">
-      <div class="row">
-        <div class="col-sm-12 text-center">
-          <h3 class="mb-10" style="font-style:italic;">Event Kampus</h3>
-          <h1 class="large mb-10">Festival Mahasiswa</h1>
-          <p class="uppercase">28 September 2025 — Unindra, Kampus B</p>
-          <a href="{{ route('register') }}" class="but scroll">Register Now</a>
-          <a href="{{ route('login') }}" class="but scroll">Login Now</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ⬆⬆ -->
-</section>
-
-{{-- Header --}}
-<header class="header header--black" role="banner">
-  <div class="container">
-    <div class="row middle-xs">
-      <div class="col-md-2 col-xs-6">
-        <a class="scroll logo" href="#wrapper" aria-label="Kembali ke atas"><h2 class="m-0">FM</h2></a>
-      </div>
-
-      {{-- Tombol hamburger + Menu --}}
-      <div class="col-md-10 col-xs-6 text-right">
-        <nav class="main-nav" role="navigation" aria-label="Navigasi utama">
-          <button type="button" class="mobile-but"
-                  aria-label="Buka menu"
-                  aria-expanded="false"
-                  aria-controls="mainMenu">
-            <span class="lines" aria-hidden="true"></span>
-          </button>
-
-          <ul id="mainMenu" class="nav-list">
-            <li><a class="scroll" href="#wrapper">Home</a></li>
-            <li><a class="scroll" href="#about">About</a></li>
-            <li><a class="scroll" href="#schedule">Schedule</a></li>
-            <li><a class="scroll" href="#faq">FAQ</a></li>
-
-            @if (Route::has('login'))
-              <li class="nav-auth">
-                @auth
-                  <div class="nav-auth-group">
-                    <a href="{{ url('/dashboard') }}" class="btn-auth btn-ghost">Dashboard</a>
-                  </div>
-                @else
-                  <div class="nav-auth-group">
-                    <a href="{{ route('login') }}" class="btn-auth btn-ghost">Login</a>
-                    @if (Route::has('register'))
-                      <a href="{{ route('register') }}" class="btn-auth btn-primary">Register</a>
-                    @endif
-                  </div>
-                @endauth
-              </li>
-            @endif
-          </ul>
-
-          {{-- Backdrop untuk menutup drawer --}}
-          <div class="nav-backdrop" hidden></div>
-        </nav>
-      </div>
-    </div>
-  </div>
-</header>
-
-
-    {{-- About --}}
-    <section id="about" class="about pt-120 pb-120 brd-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-sm-offset-2 mb-100 text-center">
-            <h1 class="title">Festival Mahasiswa Universitas Indraprasta PGRI 2025</h1>
-            <p class="title-lead mt-20">
-              Festival ini adalah perayaan terbesar di lingkungan kampus, tempat seluruh mahasiswa berkumpul untuk menunjukkan kreativitas, bakat, serta semangat kebersamaan. Acara ini menghadirkan konser musik, pentas seni, bazar, hingga kompetisi seru yang semuanya digelar oleh dan untuk mahasiswa. Lebih dari sekadar hiburan, festival ini menjadi wadah untuk mempererat solidaritas, menghidupkan budaya kampus, serta memberi ruang bagi mahasiswa untuk berekspresi dan menginspirasi.
-            </p>
-          </div>
-        </div>
-      </div>
-
-    {{-- Schedule --}}
-    <section id="schedule" class="schedule pt-120 pb-120">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-sm-offset-2 mb-100 text-center">
-            <h1 class="title">Festival Schedule</h1>
-            <p class="title-lead mt-10">Berikut adalah rundown resmi Festival Mahasiswa<br>yang berisi rangkaian kegiatan dari awal hingga akhir acara.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row"><div class="col-sm-12"><h3 class="sub-title-0 mb-25"><span class="gradient-text">Festival Day</span></h3></div></div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4">
-            <ul class="block-tabs">
-              <li class="active"><i class="et-line-calendar"></i><strong>Day 1</strong> <span>- 28 September 2025</span></li>
-              <li><i class="et-line-calendar"></i><strong>Day 2</strong> <span>- 29 September 2025</span></li>
-              <li><i class="et-line-calendar"></i><strong>Day 3</strong> <span>- 30 September 2025</span></li>
-            </ul>
-          </div>
-
-          <div class="col-sm-8">
-            <ul class="block-tab">
-              {{-- Day 1 --}}
-              <li class="active">
-                <div class="block-date"><i class="et-line-calendar"></i><strong>Day 1</strong> <span>- 28 September 2025</span></div>
-
-                <div class="block-detail">
-                  <span class="time">08:00 - 10:00</span>
-                  <span class="topic">Opening Ceremony</span>
-                  <div class="block-text">
-                    <p>Pembukaan resmi festival dengan sambutan dan penampilan pembuka.</p>
-                    <span class="speaker"><strong>MC</strong> : <a href="#" class="gradient-text">Panitia Festival</a></span>
-                  </div>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">10:30 - 12:30</span>
-                  <span class="topic">Pentas Seni Mahasiswa</span>
-                  <div class="block-text">
-                    <p>Kolaborasi tari, band akustik, dan teater kampus.</p>
-                    <span class="speaker"><strong>Performer</strong> : <a href="#" class="gradient-text">UKM Seni</a></span>
-                  </div>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">13:00</span>
-                  <span class="topic">Lunch Break</span>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">15:00 - 16:30</span>
-                  <span class="topic">Kompetisi Band</span>
-                  <div class="block-text">
-                    <p>Babak penyisihan kompetisi band antarfakultas.</p>
-                    <span class="speaker"><strong>Juri</strong> : <a href="#" class="gradient-text">Dosen & Praktisi</a></span>
-                  </div>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">17:00</span>
-                  <span class="topic">Coffee Break</span>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">17:30 - 18:00</span>
-                  <span class="topic">Pengumuman Harian</span>
-                  <div class="block-text">
-                    <p>Rangkuman kegiatan dan informasi untuk hari berikutnya.</p>
-                    <span class="speaker"><strong>Host</strong> : <a href="#" class="gradient-text">Panitia</a></span>
-                  </div>
-                </div>
-              </li>
-
-              {{-- Day 2 --}}
-              <li>
-                <div class="block-date"><i class="et-line-calendar"></i><strong>Day 2</strong> <span>- 29 September 2025</span></div>
-
-                <div class="block-detail">
-                  <span class="time">08:00 - 10:00</span>
-                  <span class="topic">Workshop Kreatif</span>
-                  <div class="block-text">
-                    <p>Konten kreatif, fotografi, dan desain poster event kampus.</p>
-                    <span class="speaker"><strong>Pemateri</strong> : <a href="#" class="gradient-text">Komunitas Kreatif</a></span>
-                  </div>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">10:30 - 12:30</span>
-                  <span class="topic">Talkshow Karier</span>
-                  <div class="block-text">
-                    <p>Berbagi pengalaman alumni dan tips internship.</p>
-                    <span class="speaker"><strong>Alumni</strong> : <a href="#" class="gradient-text">Unindra</a></span>
-                  </div>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">13:00</span>
-                  <span class="topic">Lunch Break</span>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">15:00 - 16:30</span>
-                  <span class="topic">Final Kompetisi Band</span>
-                  <div class="block-text">
-                    <p>Penentuan juara dan penampilan spesial.</p>
-                    <span class="speaker"><strong>Juri</strong> : <a href="#" class="gradient-text">Dosen & Praktisi</a></span>
-                  </div>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">17:00</span>
-                  <span class="topic">Coffee Break</span>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">17:30 - 18:00</span>
-                  <span class="topic">Pengumuman Harian</span>
-                </div>
-              </li>
-
-              {{-- Day 3 --}}
-              <li>
-                <div class="block-date"><i class="et-line-calendar"></i><strong>Day 3</strong> <span>- 30 September 2025</span></div>
-
-                <div class="block-detail">
-                  <span class="time">08:00 - 10:00</span>
-                  <span class="topic">Pameran & Bazar</span>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">10:30 - 12:00</span>
-                  <span class="topic">Awarding</span>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">15:00 - 17:00</span>
-                  <span class="topic">Konser Puncak</span>
-                </div>
-
-                <div class="block-detail">
-                  <span class="time">17:30 - 18:00</span>
-                  <span class="topic">Closing Event</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {{-- Counter --}}
-    <section class="counter pt-120 pb-120 overlay parallax">
-      <div class="background-img"><img src="{{ asset('img/6.jpg') }}" alt="Countdown Festival" loading="lazy"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 text-center front-p">
-            <h1 class="title">Time left until the festival start</h1>
-            <p class="title-lead mt-10 mb-20">28 September 2025 — Jakarta, Kampus B</p>
-            <span class="countdown gradient-text"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {{-- Sponsor --}}
-    <section class="sponser pt-100 pb-100">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-sm-offset-2 mb-50 text-center">
-            <h1 class="title">Bigup to Our Sponsors</h1>
-            <p class="title-lead mt-10 mb-20">For further info about sponsoring feel free to get in touch with us</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-sm-push-2 text-center">
-            <div class="col-md-2 col-sm-2"><div class="block-sponsor"><img src="{{ asset('img/logo/3.png') }}" alt="Sponsor 3" loading="lazy"></div></div>
-            <div class="col-md-2 col-sm-2"><div class="block-sponsor"><img src="{{ asset('img/logo/1.png') }}" alt="Sponsor 1" loading="lazy"></div></div>
-            <div class="col-md-2 col-sm-2"><div class="block-sponsor"><img src="{{ asset('img/logo/4.png') }}" alt="Sponsor 4" loading="lazy"></div></div>
-            <div class="col-md-2 col-sm-2"><div class="block-sponsor"><img src="{{ asset('img/logo/2.png') }}" alt="Sponsor 2" loading="lazy"></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {{-- FAQ --}}
-    <section id="faq" class="faq pt-120 pb-120 brd-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-sm-offset-2 mb-100 text-center">
-            <h1 class="title">Frequently asked questions</h1>
-            <p class="title-lead mt-10 mb-20">Some frequently asked questions for you.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <div class="block-faq mb-50">
-              <h4 class="mb-10">Apakah acara ini untuk umum?</h4>
-              <p>Fokus acara adalah mahasiswa di lingkungan kampus. Tamu eksternal mengikuti ketentuan panitia.</p>
-            </div>
-            <div class="block-faq mb-50">
-              <h4 class="mb-10">Bagaimana cara membeli tiket konser?</h4>
-              <p>Tiket tersedia di loket kampus dan penjualan online (link akan diumumkan di sosial media resmi).</p>
-            </div>
-            <div class="block-faq mb-50">
-              <h4 class="mb-10">Apakah tersedia stand bazar?</h4>
-              <p>Ada. Pendaftaran bazar dikelola oleh panitia ormawa. Slot terbatas, first come first served.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-sm-offset-2 text-center mt-50">
-            <h2 class="sub-title-1">Didn’t find what you are looking for?</h2>
-            <p><a class="gradient-text" href="mailto:contact@events.com">contact@events.com</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {{-- Footer --}}
-    <footer class="pt-20 bg-dark">
-      <section class="top-footer pb-120">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-4 col-sm-offset-2">
-              <h2 class="sub-title-3 mb-30">About</h2>
-              <p>Festival Mahasiswa diselenggarakan oleh dan untuk mahasiswa. Mari merayakan kreativitas, kolaborasi, dan kebersamaan.</p>
-              <ul class="block-social mt-20">
-                <li><a href="#"><i class="icon-facebook"></i></a></li>
-                <li><a href="#"><i class="icon-twitter"></i></a></li>
-                <li><a href="#"><i class="icon-youtube"></i></a></li>
-                <li><a href="#"><i class="icon-gplus"></i></a></li>
-                <li><a href="#"><i class="icon-instagram-1"></i></a></li>
-              </ul>
-            </div>
-            <div class="col-sm-4"></div>
-          </div>
-        </div>
-      </section>
-
-      <div class="bottom-footer bg-black">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <p>&copy; 2025 All rights reserved — Festival Mahasiswa.</p>
-            </div>
-            <div class="col-md-6">
-              <ul class="block-legal">
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Legal</a></li>
-                <li><span><a class="gradient-text scroll" href="#wrapper">Back To Top</a></span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </div> {{-- End wrapper --}}
-
-  {{-- JS (letakkan file2 ini di public/js) --}}
-  <script src="{{ asset('js/jquery-1.12.4.min.js') }}"></script>
-  <script src="{{ asset('js/jquery.flexslider-min.js') }}"></script>
-  <script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
-  <script src="{{ asset('js/smooth-scroll.js') }}"></script>
-  <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-  <script src="{{ asset('js/placeholders.min.js') }}"></script>
-  <script src="{{ asset('js/venobox.min.js') }}"></script>
-  <script src="{{ asset('js/instafeed.min.js') }}"></script>
-  <script src="{{ asset('js/script.js') }}"></script>
-  <script src="{{ asset('js/fm.js') }}?v={{ time() }}"></script>
-
-  {{-- Optional: inisialisasi ringan bila script.js belum ada --}}
-  <script>
-    // Smooth scroll
-    if (typeof SmoothScroll !== 'undefined') { new SmoothScroll('a.scroll[href*="#"]', { speed: 600 }); }
-
-    // Venobox
-    if (typeof $ !== 'undefined' && typeof $.fn.venobox === 'function') { $('.venobox').venobox(); }
-
-    // Flexslider (jika dibutuhkan untuk .main-slider .slides)
-    if (typeof $ !== 'undefined' && typeof $.fn.flexslider === 'function') {
-      $('.main-slider').flexslider({ animation: 'fade', controlNav: true, directionNav: false, slideshowSpeed: 4000 });
-    }
-
-    // Countdown (ganti selector .countdown)
-    if (typeof $ !== 'undefined' && typeof $.fn.countdown === 'function') {
-      $('.countdown').countdown('2025/09/28', function (event) { $(this).text(event.strftime('%Dd %Hh %Mm %Ss')); });
-    }
-  </script>
+<!-- COOKIES PLUGIN  -->
+     <script>
+      $(document).ready(function() {
+        $.cookit({
+          backgroundColor: '#cdff6b',
+          messageColor: '#000000',
+          linkColor: '#000000',
+          buttonColor: '#000000',
+          messageText: "This website uses cookies to ensure you get the best experience on our website.",
+          linkText: "Learn more",
+          linkUrl: "02_djfest-index.html",
+          buttonText: "I accept",
+        });
+      });
+    </script>
 </body>
+
 </html>
