@@ -11,6 +11,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PasswordResetController;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
+use App\Http\Controllers\PaidTicketController;
+use App\Http\Controllers\Admin\PaidTicketReviewController;
 
 Route::get('/files/{path}', function (string $path) {
     abort_unless(Storage::disk('public')->exists($path), 404);
@@ -40,6 +42,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/show', [TicketController::class, 'showTicket'])->name('ticket.show');
         Route::get('/{code}/download', [TicketController::class, 'downloadTicket'])->name('ticket.downloadTicket');
 
+    });
+
+    Route::prefix('paid-ticket')->group(function () {
+        Route::get('/form',  [\App\Http\Controllers\PaidTicketController::class, 'showForm'])->name('paid.form');
+        Route::post('/claim',[\App\Http\Controllers\PaidTicketController::class, 'claim'])->name('paid.claim');
     });
 });
 
@@ -101,6 +108,7 @@ Route::get('/qrcodes/{filename}', function ($filename) {
 
     return response()->file($path);
 });
+
 
 
 
