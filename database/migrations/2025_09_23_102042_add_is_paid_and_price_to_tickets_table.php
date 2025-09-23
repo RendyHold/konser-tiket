@@ -12,8 +12,8 @@ return new class extends Migration
     public function up()
 {
     Schema::table('tickets', function (Blueprint $table) {
-        $table->boolean('is_paid')->default(false);  // Menandakan apakah tiket ini berbayar
-        $table->unsignedInteger('price')->default(0); // Harga tiket (jika diperlukan)
+        $table->boolean('is_paid')->default(false);
+        $table->unsignedInteger('price')->default(0);
     });
 }
 
