@@ -44,7 +44,7 @@
                                     <!-- logo begin -->
                                     <div id="logo">
                                         <a href="02_djfest-index.html">
-                                            <img alt="" src="" />
+                                            <img alt="" src="images-dj/logomini.png" />
                                         </a>
                                     </div>
                                     <!-- logo close -->
